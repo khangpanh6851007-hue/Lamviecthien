@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Làm Việc Từ Thiện Tăng Phước Báo - Giao Diện 5.0 Ultra</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <!-- FontAwesome cho icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-deep: #030712;
+            --glass-bg: rgba(15, 23, 42, 0.65);
+            --glass-border: rgba(255, 215, 0, 0.25);
+            --neon-gold: #fbbf24;
+            --neon-orange: #f97316;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-deep);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(245, 158, 11, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(217, 119, 6, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 0.4) 0%, transparent 100%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Hiệu ứng hạt nền Ultra */
+        .ambient-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            filter: blur(100px);
+            opacity: 0.15;
+            z-index: 0;
+            border-radius: 50%;
+            animation: floatGlow 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatGlow {
+            0% { transform: translate(-50px, -50px) scale(1); }
+            100% { transform: translate(50px, 50px) scale(1.2); }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 680px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-radius: 28px;
+            padding: 30px 20px;
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.7),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            position: relative;
+            z-index: 1;
+            animation: containerEntry 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes containerEntry {
+            0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .header-title {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .header-title h1 {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #ea580c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 12px;
+            line-height: 1.35;
+            filter: drop-shadow(0 2px 8px rgba(245, 158, 11, 0.3));
+        }
+
+        .badge-ultra {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(249, 115, 22, 0.2));
+            color: #fcd34d;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            border: 1px solid rgba(251, 191, 36, 0.4);
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.15);
+            animation: pulseBadge 3s infinite;
+        }
+
+        @keyframes pulseBadge {
+            0%, 100% { box-shadow: 0 0 15px rgba(251, 191, 36, 0.15); }
+            50% { box-shadow: 0 0 25px rgba(251, 191, 36, 0.35); }
+        }
+
+        .badge-ultra i {
+            color: #fbbf24;
+            animation: rotateIcon 4s linear infinite;
+        }
+
+        @keyframes rotateIcon {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        /* Khung hiển thị bài thơ về Đạo */
+        .poem-box {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.5), rgba(15, 23, 42, 0.7));
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .poem-box::before {
+            content: '\f108';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            font-size: 60px;
+            color: rgba(251, 191, 36, 0.04);
+        }
+
+        .poem-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #fbbf24;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .poem-content {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #f1f5f9;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .link-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.8));
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 16px 18px;
+            border-radius: 18px;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+            transition: 0.5s;
+        }
+
+        .link-item:hover::before {
+            left: 100%;
+        }
+
+        .icon-box {
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            background: rgba(251, 191, 36, 0.1);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .link-item i.main-icon {
+            font-size: 18px;
+            color: #fbbf24;
+            transition: transform 0.3s ease;
+        }
+
+        .link-content {
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        .link-content .title {
+            display: block;
+            font-size: 15px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 3px;
+            letter-spacing: 0.2px;
+        }
+
+        .link-content .url {
+            display: block;
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 400;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .arrow-box {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-left: 10px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .link-item:hover {
+            background: linear-gradient(145deg, rgba(51, 65, 85, 0.8), rgba(30, 41, 59, 0.9));
+            border-color: rgba(251, 191, 36, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(251, 191, 36, 0.2);
+        }
+
+        .link-item:hover .icon-box {
+            background: linear-gradient(135deg, #fbbf24, #f97316);
+            border-color: transparent;
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+        }
+
+        .link-item:hover .icon-box i.main-icon {
+            color: #030712;
+            transform: scale(1.15);
+        }
+
+        .link-item:hover .arrow-box {
+            transform: translateX(4px);
+            color: #fbbf24;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 28px;
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        footer span {
+            color: #fbbf24;
+            font-weight: 700;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 24px 14px;
+                border-radius: 20px;
+            }
+            .header-title h1 {
+                font-size: 20px;
+            }
+            .link-item {
+                padding: 14px;
+            }
+            .icon-box {
+                width: 38px;
+                height: 38px;
+                min-width: 38px;
+                margin-right: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+
+    <div class="container">
+        <div class="header-title">
+            <h1>Làm Việc Từ Thiện Tăng Phước Báo</h1>
+            <div class="badge-ultra">
+                <i class="fa-solid fa-bolt-lightning"></i> Giao Diện 5.0 Ultra
+            </div>
+        </div>
+
+        <!-- Khung bài thơ về Đạo -->
+        <div class="poem-box">
+            <div class="poem-title"><i class="fa-solid fa-feather"></i> Thâm Nghĩa Đạo Đức</div>
+            <div class="poem-content">
+                "Đạo ở trong tâm chớ ở xa,<br>
+                Làm ơn gieo phước tựa như hoa.<br>
+                Tâm từ hướng thiện đường quang đãng,<br>
+                Phước đức vun bồi vạn nẻo qua."
+            </div>
+        </div>
+        
+        <div class="link-list">
+            <!-- Liên kết 1 -->
+            <a href="https://www.windy.com" class="link-item" target="_blank">
+                <div class="icon-box">
+                    <i class="fa-solid fa-cloud-sun main-icon"></i>
+                </div>
+                <div class="link-content">
+                    <span class="title">Liên Kết Website 1: Windy</span>
+                    <span class="url">https://www.windy.com</span>
+                </div>
+                <div class="arrow-box"><i class="fa-solid fa-chevron-right"></i></div>
+            </a>
+
+            <!-- Liên kết 2 -->
+            <a href="https://khangpanh6851007-hue.github.io/Cungtroihoalac/" class="link-item" target="_blank">
+                <div class="icon-box">
+                    <i class="fa-solid fa-cloud-moon main-icon"></i>
+                </div>
+                <div class="link-content">
+                    <span class="title">Cung Trời Hóa Lạc</span>
+                    <span class="url">https://khangpanh6851007-hue.github.io/Cungtroihoalac/</span>
+                </div>
+                <div class="arrow-box"><i class="fa-solid fa-chevron-right"></i></div>
+            </a>
+
+            <!-- Liên kết 3 -->
+            <a href="https://khangpanh6851007-hue.github.io/Ph-tth-chca-/" class="link-item" target="_blank">
+                <div class="icon-box">
+                    <i class="fa-solid fa-om main-icon"></i>
+                </div>
+                <div class="link-content">
+                    <span class="title">Tích Phước Cực Lạc</span>
+                    <span class="url">https://khangpanh6851007-hue.github.io/Ph-tth-chca-/</span>
+                </div>
+                <div class="arrow-box"><i class="fa-solid fa-chevron-right"></i></div>
+            </a>
+
+            <!-- Liên kết 4 -->
+            <a href="https://khangpanh6851007-hue.github.io/Tayphuongcuclac" class="link-item" target="_blank">
+                <div class="icon-box">
+                    <i class="fa-solid fa-place-of-worship main-icon"></i>
+                </div>
+                <div class="link-content">
+                    <span class="title">Tây Phương Cực Lạc</span>
+                    <span class="url">https://khangpanh6851007-hue.github.io/Tayphuongcuclac</span>
+                </div>
+                <div class="arrow-box"><i class="fa-solid fa-chevron-right"></i></div>
+            </a>
+
+            <!-- Liên kết 5 -->
+            <a href="https://khangpanh6851007-hue.github.io/Ng-c-/" class="link-item" target="_blank">
+                <div class="icon-box">
+                    <i class="fa-solid fa-chess-king main-icon"></i>
+                </div>
+                <div class="link-content">
+                    <span class="title">Ngọc Đế Ban Ân Xá</span>
+                    <span class="url">https://khangpanh6851007-hue.github.io/Ng-c-/</span>
+                </div>
+                <div class="arrow-box"><i class="fa-solid fa-chevron-right"></i></div>
+            </a>
+
+            <!-- Liên kết 6 -->
+            <a href="https://khangpanh6851007-hue.github.io/Bangphongthan/" class="link-item" target="_blank">
+                <div class="icon-box">
+                    <i class="fa-solid fa-scroll main-icon"></i>
+                </div>
+                <div class="link-content">
+                    <span class="title">Bảng Phong Thần</span>
+                    <span class="url">https://khangpanh6851007-hue.github.io/Bangphongthan/</span>
+                </div>
+                <div class="arrow-box"><i class="fa-solid fa-chevron-right"></i></div>
+            </a>
+        </div>
+
+        <footer>
+            Khang Duy Thiết Kế for <span>KhangPanh68</span>
+        </footer>
+    </div>
+
+</body>
+</html>
