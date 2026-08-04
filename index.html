@@ -2,21 +2,20 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Làm Việc Từ Thiện Tăng Phước Báo - Giao Diện 5.0 Ultra</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Trạm Phước Đức - Tâm Linh Modern</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-    <!-- FontAwesome cho icon -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-deep: #030712;
-            --glass-bg: rgba(15, 23, 42, 0.65);
-            --glass-border: rgba(255, 215, 0, 0.25);
-            --neon-gold: #fbbf24;
-            --neon-orange: #f97316;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-gold: #f59e0b;
             --text-main: #f8fafc;
-            --text-muted: #94a3b8;
+            --text-sub: #94a3b8;
+            --border-color: rgba(245, 158, 11, 0.2);
         }
 
         * {
@@ -27,429 +26,334 @@
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: var(--bg-deep);
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(245, 158, 11, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(217, 119, 6, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 0.4) 0%, transparent 100%);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 16px;
-            overflow-x: hidden;
-            position: relative;
         }
 
-        /* Hiệu ứng hạt nền Ultra */
-        .ambient-glow {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, #f59e0b, #ef4444);
-            filter: blur(100px);
-            opacity: 0.15;
-            z-index: 0;
-            border-radius: 50%;
-            animation: floatGlow 8s ease-in-out infinite alternate;
-        }
-
-        @keyframes floatGlow {
-            0% { transform: translate(-50px, -50px) scale(1); }
-            100% { transform: translate(50px, 50px) scale(1.2); }
-        }
-
-        .container {
+        .app-container {
             width: 100%;
-            max-width: 680px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-radius: 28px;
-            padding: 30px 20px;
-            box-shadow: 
-                0 25px 50px -12px rgba(0, 0, 0, 0.7),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--glass-border);
-            position: relative;
-            z-index: 1;
-            animation: containerEntry 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            max-width: 440px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+            padding: 20px;
         }
 
-        @keyframes containerEntry {
-            0% { opacity: 0; transform: translateY(30px) scale(0.95); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        .header-title {
+        /* Header */
+        .app-header {
             text-align: center;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
-
-        .header-title h1 {
-            font-size: 24px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #ea580c 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .app-header h1 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent-gold);
             text-transform: uppercase;
-            letter-spacing: 0.8px;
-            margin-bottom: 12px;
-            line-height: 1.35;
-            filter: drop-shadow(0 2px 8px rgba(245, 158, 11, 0.3));
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .app-header p {
+            font-size: 12px;
+            color: var(--text-sub);
         }
 
-        .badge-ultra {
+        /* Widget Ngày Tháng */
+        .widget-box {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 12px;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            font-size: 13px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .widget-box span i {
+            color: var(--accent-gold);
+            margin-right: 6px;
+        }
+
+        /* Tính năng Tích Phước Mới (Interactive Counter) */
+        .blessing-panel {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(30, 41, 59, 0.8));
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 18px;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .blessing-panel h3 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #fde68a;
+        }
+        .action-btn {
+            background: var(--accent-gold);
+            color: #0f172a;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(249, 115, 22, 0.2));
-            color: #fcd34d;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 6px 14px;
-            border-radius: 30px;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            border: 1px solid rgba(251, 191, 36, 0.4);
-            box-shadow: 0 0 20px rgba(251, 191, 36, 0.15);
-            animation: pulseBadge 3s infinite;
-        }
-
-        @keyframes pulseBadge {
-            0%, 100% { box-shadow: 0 0 15px rgba(251, 191, 36, 0.15); }
-            50% { box-shadow: 0 0 25px rgba(251, 191, 36, 0.35); }
-        }
-
-        .badge-ultra i {
-            color: #fbbf24;
-            animation: rotateIcon 4s linear infinite;
-        }
-
-        @keyframes rotateIcon {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(-10deg); }
-            75% { transform: rotate(10deg); }
-            100% { transform: rotate(0deg); }
-        }
-
-        /* Khung hiển thị bài thơ về Đạo */
-        .poem-box {
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.5), rgba(15, 23, 42, 0.7));
-            border: 1px solid rgba(251, 191, 36, 0.2);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 24px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .poem-box::before {
-            content: '\f108';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            top: -10px;
-            right: 15px;
-            font-size: 60px;
-            color: rgba(251, 191, 36, 0.04);
-        }
-
-        .poem-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: #fbbf24;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             gap: 8px;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+            transition: transform 0.1s;
+        }
+        .action-btn:active {
+            transform: scale(0.95);
+        }
+        .counter-display {
+            margin-top: 10px;
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+        .counter-display b {
+            color: var(--accent-gold);
         }
 
-        .poem-content {
-            font-family: 'Playfair Display', serif;
+        /* Tính năng Lời Khuyên Tâm Linh */
+        .advice-box {
+            background: rgba(15, 23, 42, 0.4);
+            border-left: 3px solid var(--accent-gold);
+            padding: 12px 14px;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 16px;
+        }
+        .advice-text {
+            font-family: 'Lora', serif;
             font-style: italic;
-            font-size: 15px;
-            line-height: 1.6;
-            color: #f1f5f9;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+            font-size: 13px;
+            line-height: 1.4;
+            color: #e2e8f0;
+            margin-bottom: 6px;
+        }
+        .advice-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: var(--text-sub);
+        }
+        .change-advice-btn {
+            background: none;
+            border: none;
+            color: var(--accent-gold);
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 600;
         }
 
-        .link-list {
+        /* Danh Sách Liên Kết Web */
+        .nav-links {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 8px;
+            max-height: 220px;
+            overflow-y: auto;
+            padding-right: 2px;
         }
-
-        .link-item {
+        .nav-item {
             display: flex;
             align-items: center;
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.8));
+            justify-content: space-between;
+            background: rgba(15, 23, 42, 0.5);
+            padding: 10px 14px;
+            border-radius: 10px;
             color: var(--text-main);
             text-decoration: none;
-            padding: 16px 18px;
-            border-radius: 18px;
-            font-size: 15px;
-            font-weight: 600;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            position: relative;
-            overflow: hidden;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: background 0.2s;
         }
-
-        .link-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
-            transition: 0.5s;
+        .nav-item:hover, .nav-item:active {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: var(--border-color);
         }
-
-        .link-item:hover::before {
-            left: 100%;
-        }
-
-        .icon-box {
-            width: 44px;
-            height: 44px;
-            min-width: 44px;
-            background: rgba(251, 191, 36, 0.1);
-            border-radius: 12px;
+        .nav-item span {
             display: flex;
-            justify-content: center;
             align-items: center;
-            margin-right: 15px;
-            border: 1px solid rgba(251, 191, 36, 0.2);
-            transition: all 0.3s ease;
+            gap: 10px;
+        }
+        .nav-item i.fa-solid {
+            color: var(--accent-gold);
+        }
+        .nav-item .fa-chevron-right {
+            font-size: 10px;
+            color: var(--text-sub);
         }
 
-        .link-item i.main-icon {
-            font-size: 18px;
-            color: #fbbf24;
-            transition: transform 0.3s ease;
-        }
-
-        .link-content {
-            flex-grow: 1;
-            overflow: hidden;
-        }
-
-        .link-content .title {
-            display: block;
-            font-size: 15px;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 3px;
-            letter-spacing: 0.2px;
-        }
-
-        .link-content .url {
-            display: block;
-            font-size: 11px;
-            color: var(--text-muted);
-            font-weight: 400;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .arrow-box {
-            color: var(--text-muted);
-            font-size: 14px;
-            margin-left: 10px;
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-
-        .link-item:hover {
-            background: linear-gradient(145deg, rgba(51, 65, 85, 0.8), rgba(30, 41, 59, 0.9));
-            border-color: rgba(251, 191, 36, 0.5);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px -5px rgba(251, 191, 36, 0.2);
-        }
-
-        .link-item:hover .icon-box {
-            background: linear-gradient(135deg, #fbbf24, #f97316);
-            border-color: transparent;
-            box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
-        }
-
-        .link-item:hover .icon-box i.main-icon {
-            color: #030712;
-            transform: scale(1.15);
-        }
-
-        .link-item:hover .arrow-box {
-            transform: translateX(4px);
-            color: #fbbf24;
-        }
-
-        footer {
+        /* Footer */
+        .app-footer {
             text-align: center;
-            margin-top: 28px;
-            font-size: 12px;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
+            margin-top: 16px;
+            font-size: 10px;
+            color: var(--text-sub);
         }
-
-        footer span {
-            color: #fbbf24;
-            font-weight: 700;
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 24px 14px;
-                border-radius: 20px;
-            }
-            .header-title h1 {
-                font-size: 20px;
-            }
-            .link-item {
-                padding: 14px;
-            }
-            .icon-box {
-                width: 38px;
-                height: 38px;
-                min-width: 38px;
-                margin-right: 12px;
-            }
+        .app-footer span {
+            color: var(--accent-gold);
         }
     </style>
 </head>
 <body>
 
-    <div class="ambient-glow"></div>
+    <div class="app-container">
+        <!-- Tiêu đề -->
+        <div class="app-header">
+            <h1>Trạm Phước Đức</h1>
+            <p>Hệ thống hỗ trợ tu tâm tích phước hằng ngày</p>
+        </div>
 
-    <div class="container">
-        <div class="header-title">
-            <h1>Làm Việc Từ Thiện Tăng Phước Báo</h1>
-            <div class="badge-ultra">
-                <i class="fa-solid fa-bolt-lightning"></i> Giao Diện 5.0 Ultra
+        <!-- Widget Lịch -->
+        <div class="widget-box">
+            <span id="dateDisplay"><i class="fa-solid fa-calendar-day"></i> Đang cập nhật...</span>
+            <span id="lunarStatus" style="color: #4ade80; font-weight: 600;"><i class="fa-solid fa-spa"></i> Ngày Thường</span>
+        </div>
+
+        <!-- Nút Tích Phước Hoạt Động Trực Tiếp -->
+        <div class="blessing-panel">
+            <h3>Gieo Duyên Lành Hằng Ngày</h3>
+            <button class="action-btn" id="blessingBtn" type="button">
+                <i class="fa-solid fa-hands-praying"></i> Niệm 1 Câu Lành
+            </button>
+            <div class="counter-display">Tổng số niệm lành đã tích lũy: <b id="countDisplay">0</b></div>
+        </div>
+
+        <!-- Lời Khuyên Tâm Linh -->
+        <div class="advice-box">
+            <div class="advice-text" id="adviceText">"Tâm thiện hướng đi đâu cũng gặp bình an."</div>
+            <div class="advice-footer">
+                <span id="adviceAuthor">- Lời Nhủ</span>
+                <button class="change-advice-btn" id="changeAdviceBtn" type="button">Đổi câu khác</button>
             </div>
         </div>
 
-        <!-- Khung bài thơ về Đạo -->
-        <div class="poem-box">
-            <div class="poem-title"><i class="fa-solid fa-feather"></i> Thâm Nghĩa Đạo Đức</div>
-            <div class="poem-content">
-                "Đạo ở trong tâm chớ ở xa,<br>
-                Làm ơn gieo phước tựa như hoa.<br>
-                Tâm từ hướng thiện đường quang đãng,<br>
-                Phước đức vun bồi vạn nẻo qua."
-            </div>
-        </div>
-        
-        <div class="link-list">
-            <!-- Liên kết 1 -->
-            <a href="https://www.windy.com" class="link-item" target="_blank">
-                <div class="icon-box">
-                    <i class="fa-solid fa-cloud-sun main-icon"></i>
-                </div>
-                <div class="link-content">
-                    <span class="title">Liên Kết Website 1: Windy</span>
-                    <span class="url">https://www.windy.com</span>
-                </div>
-                <div class="arrow-box"><i class="fa-solid fa-chevron-right"></i></div>
+        <!-- Liên Kết Nhanh -->
+        <div class="nav-links">
+            <a href="https://www.windy.com" class="nav-item" target="_blank">
+                <span><i class="fa-solid fa-cloud-sun"></i> Windy Thời Tiết</span>
+                <i class="fa-solid fa-chevron-right"></i>
             </a>
-
-            <!-- Liên kết 2 -->
-            <a href="https://khangpanh6851007-hue.github.io/Cungtroihoalac/" class="link-item" target="_blank">
-                <div class="icon-box">
-                    <i class="fa-solid fa-cloud-moon main-icon"></i>
-                </div>
-                <div class="link-content">
-                    <span class="title">Cung Trời Hóa Lạc</span>
-                    <span class="url">https://khangpanh6851007-hue.github.io/Cungtroihoalac/</span>
-                </div>
-                <div class="arrow-box"><i class="fa-solid fa-chevron-right"></i></div>
+            <a href="https://khangpanh6851007-hue.github.io/Cungtroihoalac/" class="nav-item" target="_blank">
+                <span><i class="fa-solid fa-cloud-moon"></i> Cung Trời Hóa Lạc</span>
+                <i class="fa-solid fa-chevron-right"></i>
             </a>
-
-            <!-- Liên kết 3 -->
-            <a href="https://khangpanh6851007-hue.github.io/Ph-tth-chca-/" class="link-item" target="_blank">
-                <div class="icon-box">
-                    <i class="fa-solid fa-om main-icon"></i>
-                </div>
-                <div class="link-content">
-                    <span class="title">Tích Phước Cực Lạc</span>
-                    <span class="url">https://khangpanh6851007-hue.github.io/Ph-tth-chca-/</span>
-                </div>
-                <div class="arrow-box"><i class="fa-solid fa-chevron-right"></i></div>
+            <a href="https://khangpanh6851007-hue.github.io/Ph-tth-chca-/" class="nav-item" target="_blank">
+                <span><i class="fa-solid fa-om"></i> Tích Phước Cực Lạc</span>
+                <i class="fa-solid fa-chevron-right"></i>
             </a>
-
-            <!-- Liên kết 4 -->
-            <a href="https://khangpanh6851007-hue.github.io/Tayphuongcuclac" class="link-item" target="_blank">
-                <div class="icon-box">
-                    <i class="fa-solid fa-place-of-worship main-icon"></i>
-                </div>
-                <div class="link-content">
-                    <span class="title">Tây Phương Cực Lạc</span>
-                    <span class="url">https://khangpanh6851007-hue.github.io/Tayphuongcuclac</span>
-                </div>
-                <div class="arrow-box"><i class="fa-solid fa-chevron-right"></i></div>
+            <a href="https://khangpanh6851007-hue.github.io/Tayphuongcuclac" class="nav-item" target="_blank">
+                <span><i class="fa-solid fa-place-of-worship"></i> Tây Phương Cực Lạc</span>
+                <i class="fa-solid fa-chevron-right"></i>
             </a>
-
-            <!-- Liên kết 5 -->
-            <a href="https://khangpanh6851007-hue.github.io/Ng-c-/" class="link-item" target="_blank">
-                <div class="icon-box">
-                    <i class="fa-solid fa-chess-king main-icon"></i>
-                </div>
-                <div class="link-content">
-                    <span class="title">Ngọc Đế Ban Ân Xá</span>
-                    <span class="url">https://khangpanh6851007-hue.github.io/Ng-c-/</span>
-                </div>
-                <div class="arrow-box"><i class="fa-solid fa-chevron-right"></i></div>
+            <a href="https://khangpanh6851007-hue.github.io/Ng-c-/" class="nav-item" target="_blank">
+                <span><i class="fa-solid fa-chess-king"></i> Ngọc Đế Ban Ân Xá</span>
+                <i class="fa-solid fa-chevron-right"></i>
             </a>
-
-            <!-- Liên kết 6 -->
-            <a href="https://khangpanh6851007-hue.github.io/Bangphongthan/" class="link-item" target="_blank">
-                <div class="icon-box">
-                    <i class="fa-solid fa-scroll main-icon"></i>
-                </div>
-                <div class="link-content">
-                    <span class="title">Bảng Phong Thần</span>
-                    <span class="url">https://khangpanh6851007-hue.github.io/Bangphongthan/</span>
-                </div>
-                <div class="arrow-box"><i class="fa-solid fa-chevron-right"></i></div>
+            <a href="https://khangpanh6851007-hue.github.io/Bangphongthan/" class="nav-item" target="_blank">
+                <span><i class="fa-solid fa-scroll"></i> Bảng Phong Thần</span>
+                <i class="fa-solid fa-chevron-right"></i>
             </a>
-
-            <!-- Liên kết 7 -->
-            <a href="https://khangpanh6851007-hue.github.io/Thoikymatphap/" class="link-item" target="_blank">
-                <div class="icon-box">
-                    <i class="fa-solid fa-hourglass-half main-icon"></i>
-                </div>
-                <div class="link-content">
-                    <span class="title">Thời Kỳ Mạt Pháp</span>
-                    <span class="url">https://khangpanh6851007-hue.github.io/Thoikymatphap/</span>
-                </div>
-                <div class="arrow-box"><i class="fa-solid fa-chevron-right"></i></div>
+            <a href="https://khangpanh6851007-hue.github.io/Thoikymatphap/" class="nav-item" target="_blank">
+                <span><i class="fa-solid fa-hourglass-half"></i> Thời Kỳ Mạt Pháp</span>
+                <i class="fa-solid fa-chevron-right"></i>
             </a>
-
-            <!-- Liên kết 8 (Thượng Ngươn Thánh Đức) -->
-            <a href="https://khangpanh6851007-hue.github.io/Thuongnguonducthanh/" class="link-item" target="_blank">
-                <div class="icon-box">
-                    <i class="fa-solid fa-sun main-icon"></i>
-                </div>
-                <div class="link-content">
-                    <span class="title">Thượng Ngươn Thánh Đức</span>
-                    <span class="url">https://khangpanh6851007-hue.github.io/Thuongnguonducthanh/</span>
-                </div>
-                <div class="arrow-box"><i class="fa-solid fa-chevron-right"></i></div>
+            <a href="https://khangpanh6851007-hue.github.io/Thuongnguonducthanh/" class="nav-item" target="_blank">
+                <span><i class="fa-solid fa-sun"></i> Thượng Ngươn Thánh Đức</span>
+                <i class="fa-solid fa-chevron-right"></i>
             </a>
         </div>
 
-        <footer>
-            Khang Duy Thiết Kế for <span>KhangPanh68</span>
-        </footer>
+        <div class="app-footer">
+            Thiết kế dành riêng cho <span>KhangPanh68</span>
+        </div>
     </div>
 
+    <!-- JAVASCRIPT XỬ LÝ TRỰC TIẾP -->
+    <script>
+        // Đảm bảo chạy khi toàn bộ DOM load xong
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. Xử lý bộ đếm tích phước
+            let count = parseInt(localStorage.getItem('tram_phuoc_duc_count')) || 108;
+            const countDisplay = document.getElementById('countDisplay');
+            const blessingBtn = document.getElementById('blessingBtn');
+
+            if (countDisplay) {
+                countDisplay.innerText = count;
+            }
+
+            if (blessingBtn) {
+                blessingBtn.addEventListener('click', function() {
+                    count++;
+                    localStorage.setItem('tram_phuoc_duc_count', count);
+                    if (countDisplay) {
+                        countDisplay.innerText = count;
+                    }
+                    // Hiệu ứng nhẹ khi bấm
+                    blessingBtn.style.transform = "scale(0.95)";
+                    setTimeout(() => { blessingBtn.style.transform = "scale(1)"; }, 100);
+                });
+            }
+
+            // 2. Xử lý danh ngôn / lời khuyên tâm linh
+            const advices = [
+                { text: "Tâm thiện hướng đi đâu cũng gặp bình an.", author: "- Kinh nghiệm sống" },
+                { text: "Bố thí bằng tấm lòng chân thành thì phước báo tự khắc sinh trưởng.", author: "- Luật Nhân Quả" },
+                { text: "Giữ miệng lành, nghĩ điều hay, làm việc tốt chính là cội nguồn của công đức.", author: "- Cổ Đức Sưu Tầm" },
+                { text: "Mỗi ngày gieo một niệm lành, tâm hồn tự khắc nhẹ nhàng thanh thản.", author: "- Trạm Phước Đức" }
+            ];
+
+            const adviceText = document.getElementById('adviceText');
+            const adviceAuthor = document.getElementById('adviceAuthor');
+            const changeAdviceBtn = document.getElementById('changeAdviceBtn');
+
+            function loadAdvice() {
+                const randomIndex = Math.floor(Math.random() * advices.length);
+                const item = advices[randomIndex];
+                if (adviceText) adviceText.innerText = `"${item.text}"`;
+                if (adviceAuthor) adviceAuthor.innerText = item.author;
+            }
+
+            loadAdvice();
+
+            if (changeAdviceBtn) {
+                changeAdviceBtn.addEventListener('click', loadAdvice);
+            }
+
+            // 3. Xử lý ngày tháng và ngày chay
+            const now = new Date();
+            const dateString = now.toLocaleDateString('vi-VN', { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' });
+            const dateDisplay = document.getElementById('dateDisplay');
+            if (dateDisplay) {
+                dateDisplay.innerHTML = `<i class="fa-solid fa-calendar-day"></i> ${dateString}`;
+            }
+
+            const day = now.getDate();
+            const lunarStatus = document.getElementById('lunarStatus');
+            if (lunarStatus) {
+                if (day === 1 || day === 15 || day === 14 || day === 30) {
+                    lunarStatus.innerHTML = `<i class="fa-solid fa-leaf"></i> Gần Ngày Chay`;
+                    lunarStatus.style.color = "#fbbf24";
+                } else {
+                    lunarStatus.innerHTML = `<i class="fa-solid fa-spa"></i> Ngày Thường`;
+                    lunarStatus.style.color = "#4ade80";
+                }
+            }
+
+        });
+    </script>
 </body>
 </html>
