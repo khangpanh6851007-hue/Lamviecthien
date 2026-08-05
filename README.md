@@ -1,53 +1,47 @@
-# 🌟 Trạm Phước Đức - Hệ Thống Hỗ Trợ Tu Tâm Tích Phước
+# 🌟 Trạm Phước Đức - Tâm Linh Modern
 
-[![GitHub Pages Status](https://img.shields.io/badge/GitHub%20Pages-Active-success?style=for-the-badge&logo=github)](https://github.com/KhangPanh6851007-hue/KhangPanh6851007-hue.github.io)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+**Trạm Phước Đức** là ứng dụng web hiện đại (Single-page Web App) được thiết kế giao diện tối ưu riêng cho thiết bị di động (Mobile-first), giúp người dùng dễ dàng tu tâm, tích phước, thực hành niệm lành hằng ngày và nhanh chóng truy cập vào các không gian tâm linh số hóa.
 
-> **"Tâm thiện hướng đi đâu cũng gặp bình an. Gieo nhân lành gặt quả phúc."**
+Thiết kế dành riêng cho **KhangPanh68**.
 
 ---
 
-## 📱 Giới Thiệu Dự Án
+## 📱 Các Tính Năng Nổi Bật
 
-**Trạm Phước Đức** là một ứng dụng Web di động tối giản (Mobile-First Web App) được thiết kế hiện đại, giao diện trực quan nhằm hỗ trợ người dùng thực hành niệm lành, tích phước hằng ngày, theo dõi lịch vạn niên/ngày chay và kết nối nhanh chóng đến các không gian tâm linh số khác.
+*   **📅 Widget Lịch & Ngày Chay:** Tự động nhận diện ngày tháng năm hiện tại theo định dạng tiếng Việt và tự động cảnh báo trạng thái Gần Ngày Chay dựa theo lịch tháng.
+*   **✨ Bộ Đếm Tích Phước Trực Tiếp:** Tích hợp nút **"Niệm 1 Câu Lành"** cho phép người dùng gieo duyên tích lũy công đức cá nhân, bộ đếm tự động lưu trữ an toàn ngay trên trình duyệt (`localStorage`).
+*   **📜 Lời Khuyên & Danh Ngôn Tâm Linh:** Góc suy ngẫm với những câu nói hay, thông điệp tích cực giúp tâm hồn an tịnh, có nút chuyển đổi linh hoạt.
+*   **🔗 Hệ Thống Liên Kết Không Gian Số:** Menu tổng hợp các đường dẫn nhanh đến các trạm, cung trời và cõi tịnh độ trực tuyến.
 
-### ✨ Các Tính Năng Nổi Bật
+---
 
-1. **Chuông Niệm Lành & Đếm Tích Phước:** 
-   * Tương tác trực tiếp bằng nút bấm để tăng số lượng câu niệm lành.
-   * Tự động lưu trữ tiến trình cá nhân an toàn bằng bộ nhớ trình duyệt (`localStorage`).
-2. **Lời Khuyên Tâm Linh Ngẫu Nhiên:**
-   * Cung cấp các câu nói đạo đức, luật nhân quả và lời dạy cổ đức.
-   * Tính năng đổi câu khuyên linh hoạt theo thời gian thực.
-3. **Lịch Vạn Niên & Trạng Thái Ngày Chay:**
-   * Tự động hiển thị thứ, ngày, tháng theo định dạng tiếng Việt.
-   * Tự nhận diện các ngày mùng 1, rằm (14, 15, 30) để nhắc nhở ngày chay tịnh.
-4. **Hệ Thống Điều Hướng Tâm Linh:**
-   * Tích hợp danh sách liên kết mượt mà dẫn tới các không gian số liên quan như: *Cung Trời Hóa Lạc, Tây Phương Cực Lạc, Bảng Phong Thần, Thời Kỳ Mạt Pháp,...*
+## 🗺️ Danh Sách Các Trạm & Liên Kết Trong Ứng Dụng
+
+| Tên Liên Kết | Mô Tả | Đường Dẫn |
+| :--- | :--- | :--- |
+| **Windy Thời Tiết** | Theo dõi thông tin thời tiết trực quan | [Xem ngay](https://www.windy.com) |
+| **Cung Trời Hóa Lạc** | Khám phá không gian Cung Trời Hóa Lạc | [Truy cập](https://khangpanh6851007-hue.github.io/Cungtroihoalac/) |
+| **Tích Đức Ở Cung Trời Hóa Lạc** | Trạm thực hành tích đức tối ưu trên mobile | [Truy cập](https://khangpanh6851007-hue.github.io/Cungtroihoalacmobile/) |
+| **Tích Phước Cực Lạc** | Thực hành vun bồi phước báu | [Truy cập](https://khangpanh6851007-hue.github.io/Ph-tth-chca-/) |
+| **Tây Phương Cực Lạc** | Không gian niệm Phật hướng về Tây Phương | [Truy cập](https://khangpanh6851007-hue.github.io/Tayphuongcuclac) |
+| **Ngọc Đế Ban Ân Xá** | Trạm cầu an và nhận ân xá | [Truy cập](https://khangpanh6851007-hue.github.io/Ng-c-/) |
+| **Bảng Phong Thần** | Tra cứu danh sách phong thần công đức | [Truy cập](https://khangpanh6851007-hue.github.io/Bangphongthan/) |
+| **Thời Kỳ Mạt Pháp** | Chiêm nghiệm quy luật thời kỳ | [Truy cập](https://khangpanh6851007-hue.github.io/Thoikymatphap/) |
+| **Thượng Ngươn Thánh Đức** | Hướng về kỷ nguyên thánh đức | [Truy cập](https://khangpanh6851007-hue.github.io/Thuongnguonducthanh/) |
 
 ---
 
 ## 🛠️ Công Nghệ Sử Dụng
 
-* **HTML5 / CSS3:** Thiết kế giao diện Glassmorphism hiện đại, tương thích hoàn toàn với màn hình điện thoại (Mobile Responsive).
-* **JavaScript (ES6+):** Xử lý sự kiện bất đồng bộ, tương tác thời gian thực và lưu trữ bộ nhớ đệm client-side.
-* **FontAwesome (v6.4.0):** Hệ thống biểu tượng tâm linh, công nghệ cao trực quan.
-* **Google Fonts (Inter & Lora):** Kiểu chữ tinh tế, dễ đọc, mang lại cảm giác tĩnh tại.
+*   **HTML5 & CSS3:** Thiết kế giao diện Dark Mode sang trọng, sử dụng biến màu CSS (`:root`), hiệu ứng bóng mờ (glassmorphism nhẹ) và tối ưu độ nhạy trên thiết bị cảm ứng di động.
+*   **JavaScript (Vanilla):** Xử lý sự kiện tương tác bộ đếm lưu kho lưu trữ cục bộ (`localStorage`), random danh ngôn và đồng hồ thời gian thực.
+*   **FontAwesome (v6.4.0):** Hệ thống biểu tượng tâm linh và điều hướng trực quan.
+*   **Google Fonts:** Sử dụng font chữ `Inter` (hiện đại, dễ đọc) kết hợp `Lora` (tạo nét cổ điển, trang trọng cho lời khuyên).
 
 ---
 
-## 🚀 Trải Nghiệm Trực Tuyến
+## 🚀 Hướng Dẫn Sử Dụng & Triển Khai
 
-Bạn có thể truy cập và trải nghiệm trực tiếp ứng dụng tại:
-🔗 **[Trạm Phước Đức trên GitHub Pages](https://khangpanh6851007-hue.github.io/KhangPanh6851007-hue.github.io/)** *(hoặc đường dẫn repository của bạn)*
-
----
-
-## 📂 Cấu Trúc Mã Nguồn
-
-Dự án được tối ưu hóa theo dạng Single-File (chứa toàn bộ trong một file duy nhất) giúp triển khai siêu tốc và không gặp lỗi liên kết file:
-
-```text
-📦 Tram-Phuoc-Duc
- ┣ 📜 index.html  # Chứa toàn bộ giao diện HTML, CSS Stylesheet và Logic JavaScript
- ┗ 📜 README.md   # Tài liệu hướng dẫn dự án
+1. Tải file mã nguồn (`index.html`) về máy hoặc đẩy lên kho lưu trữ **GitHub Repository**.
+2. Bật tính năng **GitHub Pages** trong phần cài đặt của Repository để xuất bản trang web trực tuyến miễn phí.
+3. Mở trình duyệt trên điện thoại hoặc máy tính để trải nghiệm không gian tu tập hằng ngày.
