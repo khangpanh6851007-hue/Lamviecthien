@@ -1,48 +1,43 @@
-# 🌟 Trạm Phước Đức - Hệ Thống Hỗ Trợ Tu Tâm Tích Phước Hằng Ngày
+# 🌟 Trạm Phước Đức - Hệ Thống Tu Tâm Tích Phước Hiện Đại
 
-<div align="center">
-
-![GitHub last commit](https://img.shields.io/github/last-commit/khangpanh6851007-hue/tramphuocduc?style=flat-square&color=f59e0b)
-![HTML5](https://img.shields.io/badge/HTML5-%23E34F26.svg?style=flat-square&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-%231572B6.svg?style=flat-square&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?style=flat-square&logo=javascript&logoColor=black)
-
-**Thiết kế dành riêng cho KhangPanh68**  
-*Hệ sinh thái tâm linh hiện đại, giúp gieo duyên lành và tích lũy phước đức mỗi ngày.*
-
-</div>
+Ứng dụng **Trạm Phước Đức** được thiết kế dưới dạng một Web App tối giản, hiện đại và chuẩn di động, giúp bạn dễ dàng tu tâm, tích phước hằng ngày và nhanh chóng truy cập vào các không gian tâm linh, tài nguyên tra cứu hữu ích.
 
 ---
 
-## 🚀 Giới Thiệu
-**Trạm Phước Đức** là một ứng dụng Web tĩnh (Single-Page App) được thiết kế theo phong cách hiện đại, tối ưu hóa giao diện trên nền tảng di động. Ứng dụng tích hợp nhiều công cụ hỗ trợ tinh thần, tra cứu lịch ngày chay, bộ đếm niệm phước tương tác trực tiếp, cùng hệ thống liên kết nhanh đến các không gian tâm linh khác.
+## 📱 Hướng Dẫn Sử Dụng Trên Điện Thoại (Acode / TrebEdit)
 
-## ✨ Tính Năng Nổi Bật
+Bạn hoàn toàn có thể tự chỉnh sửa, phát triển hoặc chạy ứng dụng này ngay trực tiếp trên điện thoại Android/iOS thông qua các trình soạn thảo code di động phổ biến như **Acode** hoặc **TrebEdit**.
 
-*   📅 **Widget Lịch & Ngày Chay:** Tự động cập nhật thứ, ngày, tháng hiện theo định dạng Việt Nam và hiển thị trạng thái ngày chay (Mùng 1, Rằm, 14, 30 Âm lịch/Gần Ngày Chay).
-*   📿 **Bộ Đếm "Niệm 1 Câu Lành":** Nút bấm tương tác trực tiếp giúp người dùng tích lũy số câu niệm lành, tự động lưu trữ tiến trình thông qua `localStorage` của trình duyệt.
-*   📜 **Góc Lời Khuyên Tâm Linh:** Cung cấp các câu danh ngôn, lời nhắn nhủ ý nghĩa về luật nhân quả, cách tu tâm dưỡng tính với nút đổi câu linh hoạt.
-*   🌐 **Hệ Thống Liên Kết Không Gian Tâm Linh:** Danh sách các cổng thông tin và trạm phước đức mở rộng:
-    *   Windy Thời Tiết
-    *   Cung Trời Hóa Lạc & Tích Đức Ở Cung Trời Hóa Lạc
-    *   Tích Phước Cực Lạc & Tây Phương Cực Lạc
-    *   **Cuộc Đại Phán Xét Cuối Cùng Của Nhân Loại** *(Mới thêm)*
-    *   Ngọc Đế Ban Ân Xá
-    *   Bảng Phong Thần
-    *   Thời Kỳ Mạt Pháp
-    *   Thượng Ngươn Thánh Đức
+### 1. Sử dụng với ứng dụng **Acode (Android)**
+* Tải và cài đặt ứng dụng **Acode** từ Google Play Store.
+* Mở Acode, chọn mục quản lý thư mục và tạo một thư mục mới (ví dụ: `tram-phuoc-duc`).
+* Tạo một tệp tin mới bên trong thư mục đó và đặt tên là `index.html`.
+* Sao chép toàn bộ mã nguồn HTML của dự án dán vào tệp `index.html` vừa tạo và nhấn **Lưu (Save)**.
+* Sử dụng tính năng xem trước (Preview) tích hợp sẵn trong Acode để trải nghiệm giao diện trực tiếp.
+
+### 2. Sử dụng với ứng dụng **TrebEdit**
+* Tải và cài đặt ứng dụng **TrebEdit** trên thiết bị của bạn.
+* Mở ứng dụng, chọn menu **Text Editor** để tạo file mới hoặc chọn **Workspace** để tạo một dự án web mới.
+* Lưu tệp với tên `index.html`.
+* Dán toàn bộ mã nguồn vào, sau đó chọn **Run** để xem trang web hiển thị trên trình duyệt tích hợp của ứng dụng.
+
+---
+
+## ✨ Các Tính Năng Nổi Bật
+
+* **Widget Lịch & Ngày Chay:** Tự động cập nhật thứ, ngày, tháng theo định dạng tiếng Việt và nhận diện các mốc ngày chay niệm trong tháng.
+* **Bộ Đếm Tích Phước Tương Tác:** Nút bấm *"Niệm 1 Câu Lành"* tích hợp sẵn hiệu ứng chuyển động mượt mà và lưu trữ số lượng tích lũy trực tiếp trên trình duyệt bằng `localStorage`.
+* **Góc Lời Khuyên Tâm Linh:** Cung cấp các câu danh ngôn, lời nhắn nhủ mang năng lượng tích cực, có thể thay đổi ngẫu nhiên linh hoạt theo nhu cầu.
+* **Hệ Thống Liên Kết Nhanh:** Truy cập nhanh chóng đến các trang thông tin phong thủy, cõi giới tâm linh, và các công cụ tra cứu thời tiết chỉ với một chạm.
 
 ---
 
 ## 🛠️ Công Nghệ Sử Dụng
-*   **Frontend:** HTML5, CSS3 (Flexbox, CSS Variables, Gradients), Vanilla JavaScript (DOM Manipulation, LocalStorage).
-*   **Fonts & Icons:** Google Fonts (`Inter`, `Lora`), FontAwesome 6.4.0.
+
+* **HTML5 & CSS3:** Thiết kế giao diện hiện đại với Dark Mode, tối ưu trải nghiệm trên các dòng điện thoại thông minh (Responsive).
+* **JavaScript (Vanilla):** Xử lý logic thời gian thực, lưu trữ dữ liệu cá nhân cục bộ và tương tác giao diện người dùng tối ưu.
+* **FontAwesome & Google Fonts:** Sử dụng bộ icon trực quan kết hợp cùng font chữ Inter và Lora mang lại cảm giác trang trọng, ấm cúng.
 
 ---
 
-## ⚙️ Cài Đặt & Triển Khai (Deploy)
-Dự án thuần HTML/CSS/JS nên bạn có thể chạy trực tiếp trên trình duyệt hoặc đưa lên **GitHub Pages** một cách nhanh chóng:
-
-1. Clone repository về máy:
-   ```bash
-   git clone [https://github.com/khangpanh6851007-hue/tramphuocduc.git](https://github.com/khangpanh6851007-hue/tramphuocduc.git)
+*Thiết kế dành riêng cho **KhangPanh68**.*
