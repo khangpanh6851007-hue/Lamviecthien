@@ -1,0 +1,43 @@
+name: Deploy Trạm Phước Đức to GitHub Pages
+
+on:
+  # Chạy tự động mỗi khi có push lên nhánh main
+  push:
+    branches: [ "main" ]
+
+  # Cho phép kích hoạt thủ công từ tab Actions trên GitHub
+  workflow_dispatch:
+
+# Phân quyền cho GITHUB_TOKEN để có thể deploy lên GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Chỉ cho phép một tiến trình deploy chạy tại một thời điểm để tránh xung đột
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Đảm bảo file index.html nằm ở thư mục gốc của repository
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
