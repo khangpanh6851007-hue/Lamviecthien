@@ -262,7 +262,6 @@
                 <span><i class="fa-solid fa-place-of-worship"></i> Tây Phương Cực Lạc</span>
                 <i class="fa-solid fa-chevron-right"></i>
             </a>
-            <!-- Nút mới thêm vào -->
             <a href="https://khangpanh6851007-hue.github.io/CuocPhanxetcuoicung/" class="nav-item" target="_blank">
                 <span><i class="fa-solid fa-scale-balanced"></i> Cuộc Đại Phán Xét Cuối Cùng Của Nhân Loại</span>
                 <i class="fa-solid fa-chevron-right"></i>
@@ -283,6 +282,11 @@
                 <span><i class="fa-solid fa-sun"></i> Thượng Ngươn Thánh Đức</span>
                 <i class="fa-solid fa-chevron-right"></i>
             </a>
+            <!-- Nút mới thêm: 10 Điều Quy Y Tam Bảo -->
+            <a href="https://khangpanh6851007-hue.github.io/10-i-uQuyYTamB-o-/" class="nav-item" target="_blank">
+                <span><i class="fa-solid fa-book-bookmark"></i> 10 Điều Quy Y Tam Bảo</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
         </div>
 
         <div class="app-footer">
@@ -292,9 +296,7 @@
 
     <!-- JAVASCRIPT XỬ LÝ TRỰC TIẾP -->
     <script>
-        // Đảm bảo chạy khi toàn bộ DOM load xong
         document.addEventListener("DOMContentLoaded", function() {
-            
             // 1. Xử lý bộ đếm tích phước
             let count = parseInt(localStorage.getItem('tram_phuoc_duc_count')) || 108;
             const countDisplay = document.getElementById('countDisplay');
@@ -311,7 +313,6 @@
                     if (countDisplay) {
                         countDisplay.innerText = count;
                     }
-                    // Hiệu ứng nhẹ khi bấm
                     blessingBtn.style.transform = "scale(0.95)";
                     setTimeout(() => { blessingBtn.style.transform = "scale(1)"; }, 100);
                 });
@@ -361,7 +362,6 @@
                     lunarStatus.style.color = "#4ade80";
                 }
             }
-
         });
     </script>
 </body>
