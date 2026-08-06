@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Trạm Phước Đức - Tâm Linh Modern</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-gold: #f59e0b;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --border-color: rgba(245, 158, 11, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 440px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+        }
+
+        /* Header */
+        .app-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .app-header h1 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .app-header p {
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        /* Widget Ngày Tháng */
+        .widget-box {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 12px;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            font-size: 13px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .widget-box span i {
+            color: var(--accent-gold);
+            margin-right: 6px;
+        }
+
+        /* Tính năng Tích Phước Mới (Interactive Counter) */
+        .blessing-panel {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(30, 41, 59, 0.8));
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 18px;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .blessing-panel h3 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #fde68a;
+        }
+        .action-btn {
+            background: var(--accent-gold);
+            color: #0f172a;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+            transition: transform 0.1s;
+        }
+        .action-btn:active {
+            transform: scale(0.95);
+        }
+        .counter-display {
+            margin-top: 10px;
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+        .counter-display b {
+            color: var(--accent-gold);
+        }
+
+        /* Tính năng Lời Khuyên Tâm Linh */
+        .advice-box {
+            background: rgba(15, 23, 42, 0.4);
+            border-left: 3px solid var(--accent-gold);
+            padding: 12px 14px;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 16px;
+        }
+        .advice-text {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-size: 13px;
+            line-height: 1.4;
+            color: #e2e8f0;
+            margin-bottom: 6px;
+        }
+        .advice-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: var(--text-sub);
+        }
+        .change-advice-btn {
+            background: none;
+            border: none;
+            color: var(--accent-gold);
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* Danh Sách Liên Kết Web */
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 220px;
+            overflow-y: auto;
+            padding-right: 2px;
+        }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(15, 23, 42, 0.5);
+            padding: 10px 14px;
+            border-radius: 10px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: background 0.2s;
+        }
+        .nav-item:hover, .nav-item:active {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: var(--border-color);
+        }
+        .nav-item span {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-item i.fa-solid {
+            color: var(--accent-gold);
+        }
+        .nav-item .fa-chevron-right {
+            font-size: 10px;
+            color: var(--text-sub);
+        }
+
+        /* Footer */
+        .app-footer {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 10px;
+            color: var(--text-sub);
+        }
+        .app-footer span {
+            color: var(--accent-gold);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Tiêu đề -->
+        <div class="app-header">
+            <h1>Trạm Phước Đức</h1>
+            <p>Hệ thống hỗ trợ tu tâm tích phước hằng ngày</p>
+        </div>
+
+        <!-- Widget Lịch -->
+        <div class="widget-box">
+            <span id="dateDisplay"><i class="fa-solid fa-calendar-day"></i> Đang cập nhật...</span>
+            <span id="lunarStatus" style="color: #4ade80; font-weight: 600;"><i class="fa-solid fa-spa"></i> Ngày Thường</span>
+        </div>
+
+        <!-- Nút Tích Phước Hoạt Động Trực Tiếp -->
+        <div class="blessing-panel">
+            <h3>Gieo Duyên Lành Hằng Ngày</h3>
+            <button class="action-btn" id="blessingBtn" type="button">
+                <i class="fa-solid fa-hands-praying"></i> Niệm 1 Câu Lành
+            </button>
+            <div class="counter-display">Tổng số niệm lành đã tích lũy: <b id="countDisplay">0</b></div>
+        </div>
+
+        <!-- Lời Khuyên Tâm Linh -->
+        <div class="advice-box">
+            <div class="advice-text" id="adviceText">"Tâm thiện hướng đi đâu cũng gặp bình an."</div>
+            <div class="advice-footer">
+                <span id="adviceAuthor">- Lời Nhủ</span>
+                <button class="change-advice-btn" id="changeAdviceBtn" type="button">Đổi câu khác</button>
+            </div>
+        </div>
+
+        <!-- Liên Kết Nhanh -->
+        <div class="nav-links">
+            <a href="https://www.windy.com" class="nav-item" target="_blank">
+                <span><i class="fa-solid fa-cloud-sun"></i> Windy Thời Tiết</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            <a href="https://khangpanh6851007-hue.github.io/Cungtroihoalac/" class="nav-item" target="_blank">
+                <span><i class="fa-solid fa-cloud-moon"></i> Cung Trời Hóa Lạc</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            <a href="https://khangpanh6851007-hue.github.io/Cungtroihoalacmobile/" class="nav-item" target="_blank">
+                <span><i class="fa-solid fa-star"></i> Tích Đức Ở Cung Trời Hóa Lạc</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            <a href="https://khangpanh6851007-hue.github.io/Ph-tth-chca-/" class="nav-item" target="_blank">
+                <span><i class="fa-solid fa-om"></i> Tích Phước Cực Lạc</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            <a href="https://khangpanh6851007-hue.github.io/Tayphuongcuclac" class="nav-item" target="_blank">
+                <span><i class="fa-solid fa-place-of-worship"></i> Tây Phương Cực Lạc</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            <a href="https://khangpanh6851007-hue.github.io/CuocPhanxetcuoicung/" class="nav-item" target="_blank">
+                <span><i class="fa-solid fa-scale-balanced"></i> Cuộc Đại Phán Xét Cuối Cùng Của Nhân Loại</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            <a href="https://khangpanh6851007-hue.github.io/Ng-c-/" class="nav-item" target="_blank">
+                <span><i class="fa-solid fa-chess-king"></i> Ngọc Đế Ban Ân Xá</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            <a href="https://khangpanh6851007-hue.github.io/Bangphongthan/" class="nav-item" target="_blank">
+                <span><i class="fa-solid fa-scroll"></i> Bảng Phong Thần</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            <a href="https://khangpanh6851007-hue.github.io/Thoikymatphap/" class="nav-item" target="_blank">
+                <span><i class="fa-solid fa-hourglass-half"></i> Thời Kỳ Mạt Pháp</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            <a href="https://khangpanh6851007-hue.github.io/Thuongnguonducthanh/" class="nav-item" target="_blank">
+                <span><i class="fa-solid fa-sun"></i> Thượng Ngươn Thánh Đức</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            <!-- Nút mới thêm: 10 Điều Quy Y Tam Bảo -->
+            <a href="https://khangpanh6851007-hue.github.io/10-i-uQuyYTamB-o-/" class="nav-item" target="_blank">
+                <span><i class="fa-solid fa-book-bookmark"></i> 10 Điều Quy Y Tam Bảo</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+        </div>
+
+        <div class="app-footer">
+            Thiết kế dành riêng cho <span>KhangPanh68</span>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT XỬ LÝ TRỰC TIẾP -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 1. Xử lý bộ đếm tích phước
+            let count = parseInt(localStorage.getItem('tram_phuoc_duc_count')) || 108;
+            const countDisplay = document.getElementById('countDisplay');
+            const blessingBtn = document.getElementById('blessingBtn');
+
+            if (countDisplay) {
+                countDisplay.innerText = count;
+            }
+
+            if (blessingBtn) {
+                blessingBtn.addEventListener('click', function() {
+                    count++;
+                    localStorage.setItem('tram_phuoc_duc_count', count);
+                    if (countDisplay) {
+                        countDisplay.innerText = count;
+                    }
+                    blessingBtn.style.transform = "scale(0.95)";
+                    setTimeout(() => { blessingBtn.style.transform = "scale(1)"; }, 100);
+                });
+            }
+
+            // 2. Xử lý danh ngôn / lời khuyên tâm linh
+            const advices = [
+                { text: "Tâm thiện hướng đi đâu cũng gặp bình an.", author: "- Kinh nghiệm sống" },
+                { text: "Bố thí bằng tấm lòng chân thành thì phước báo tự khắc sinh trưởng.", author: "- Luật Nhân Quả" },
+                { text: "Giữ miệng lành, nghĩ điều hay, làm việc tốt chính là cội nguồn của công đức.", author: "- Cổ Đức Sưu Tầm" },
+                { text: "Mỗi ngày gieo một niệm lành, tâm hồn tự khắc nhẹ nhàng thanh thản.", author: "- Trạm Phước Đức" }
+            ];
+
+            const adviceText = document.getElementById('adviceText');
+            const adviceAuthor = document.getElementById('adviceAuthor');
+            const changeAdviceBtn = document.getElementById('changeAdviceBtn');
+
+            function loadAdvice() {
+                const randomIndex = Math.floor(Math.random() * advices.length);
+                const item = advices[randomIndex];
+                if (adviceText) adviceText.innerText = `"${item.text}"`;
+                if (adviceAuthor) adviceAuthor.innerText = item.author;
+            }
+
+            loadAdvice();
+
+            if (changeAdviceBtn) {
+                changeAdviceBtn.addEventListener('click', loadAdvice);
+            }
+
+            // 3. Xử lý ngày tháng và ngày chay
+            const now = new Date();
+            const dateString = now.toLocaleDateString('vi-VN', { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' });
+            const dateDisplay = document.getElementById('dateDisplay');
+            if (dateDisplay) {
+                dateDisplay.innerHTML = `<i class="fa-solid fa-calendar-day"></i> ${dateString}`;
+            }
+
+            const day = now.getDate();
+            const lunarStatus = document.getElementById('lunarStatus');
+            if (lunarStatus) {
+                if (day === 1 || day === 15 || day === 14 || day === 30) {
+                    lunarStatus.innerHTML = `<i class="fa-solid fa-leaf"></i> Gần Ngày Chay`;
+                    lunarStatus.style.color = "#fbbf24";
+                } else {
+                    lunarStatus.innerHTML = `<i class="fa-solid fa-spa"></i> Ngày Thường`;
+                    lunarStatus.style.color = "#4ade80";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
