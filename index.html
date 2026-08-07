@@ -81,7 +81,7 @@
             margin-right: 6px;
         }
 
-        /* Tính năng Tích Phước Mới (Interactive Counter) */
+        /* Tính năng Tích Phước Mới */
         .blessing-panel {
             background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(30, 41, 59, 0.8));
             border: 1px solid var(--border-color);
@@ -123,7 +123,7 @@
             color: var(--accent-gold);
         }
 
-        /* Tính năng Lời Khuyên Tâm Linh */
+        /* Lời Khuyên Tâm Linh */
         .advice-box {
             background: rgba(15, 23, 42, 0.4);
             border-left: 3px solid var(--accent-gold);
@@ -222,7 +222,7 @@
             <span id="lunarStatus" style="color: #4ade80; font-weight: 600;"><i class="fa-solid fa-spa"></i> Ngày Thường</span>
         </div>
 
-        <!-- Nút Tích Phước Hoạt Động Trực Tiếp -->
+        <!-- Nút Tích Phước -->
         <div class="blessing-panel">
             <h3>Gieo Duyên Lành Hằng Ngày</h3>
             <button class="action-btn" id="blessingBtn" type="button">
@@ -231,7 +231,7 @@
             <div class="counter-display">Tổng số niệm lành đã tích lũy: <b id="countDisplay">0</b></div>
         </div>
 
-        <!-- Lời Khuyên Tâm Linh -->
+        <!-- Lời Khuyên -->
         <div class="advice-box">
             <div class="advice-text" id="adviceText">"Tâm thiện hướng đi đâu cũng gặp bình an."</div>
             <div class="advice-footer">
@@ -244,6 +244,10 @@
         <div class="nav-links">
             <a href="https://www.windy.com" class="nav-item" target="_blank">
                 <span><i class="fa-solid fa-cloud-sun"></i> Windy Thời Tiết</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            <a href="https://khangpanh6851007-hue.github.io/Samtrangtrinh/" class="nav-item" target="_blank">
+                <span><i class="fa-solid fa-book-reader"></i> Sấm Trạng Trình</span>
                 <i class="fa-solid fa-chevron-right"></i>
             </a>
             <a href="https://khangpanh6851007-hue.github.io/Cungtroihoalac/" class="nav-item" target="_blank">
@@ -282,7 +286,6 @@
                 <span><i class="fa-solid fa-sun"></i> Thượng Ngươn Thánh Đức</span>
                 <i class="fa-solid fa-chevron-right"></i>
             </a>
-            <!-- Nút mới thêm: 10 Điều Quy Y Tam Bảo -->
             <a href="https://khangpanh6851007-hue.github.io/10-i-uQuyYTamB-o-/" class="nav-item" target="_blank">
                 <span><i class="fa-solid fa-book-bookmark"></i> 10 Điều Quy Y Tam Bảo</span>
                 <i class="fa-solid fa-chevron-right"></i>
@@ -294,31 +297,24 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT XỬ LÝ TRỰC TIẾP -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // 1. Xử lý bộ đếm tích phước
             let count = parseInt(localStorage.getItem('tram_phuoc_duc_count')) || 108;
             const countDisplay = document.getElementById('countDisplay');
             const blessingBtn = document.getElementById('blessingBtn');
 
-            if (countDisplay) {
-                countDisplay.innerText = count;
-            }
+            if (countDisplay) countDisplay.innerText = count;
 
             if (blessingBtn) {
                 blessingBtn.addEventListener('click', function() {
                     count++;
                     localStorage.setItem('tram_phuoc_duc_count', count);
-                    if (countDisplay) {
-                        countDisplay.innerText = count;
-                    }
+                    if (countDisplay) countDisplay.innerText = count;
                     blessingBtn.style.transform = "scale(0.95)";
                     setTimeout(() => { blessingBtn.style.transform = "scale(1)"; }, 100);
                 });
             }
 
-            // 2. Xử lý danh ngôn / lời khuyên tâm linh
             const advices = [
                 { text: "Tâm thiện hướng đi đâu cũng gặp bình an.", author: "- Kinh nghiệm sống" },
                 { text: "Bố thí bằng tấm lòng chân thành thì phước báo tự khắc sinh trưởng.", author: "- Luật Nhân Quả" },
@@ -338,18 +334,12 @@
             }
 
             loadAdvice();
+            if (changeAdviceBtn) changeAdviceBtn.addEventListener('click', loadAdvice);
 
-            if (changeAdviceBtn) {
-                changeAdviceBtn.addEventListener('click', loadAdvice);
-            }
-
-            // 3. Xử lý ngày tháng và ngày chay
             const now = new Date();
             const dateString = now.toLocaleDateString('vi-VN', { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' });
             const dateDisplay = document.getElementById('dateDisplay');
-            if (dateDisplay) {
-                dateDisplay.innerHTML = `<i class="fa-solid fa-calendar-day"></i> ${dateString}`;
-            }
+            if (dateDisplay) dateDisplay.innerHTML = `<i class="fa-solid fa-calendar-day"></i> ${dateString}`;
 
             const day = now.getDate();
             const lunarStatus = document.getElementById('lunarStatus');
