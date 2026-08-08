@@ -3,7 +3,8 @@ name: Deploy Trạm Phước Đức to GitHub Pages
 on:
   push:
     branches:
-      - main  # Thay đổi thành 'master' nếu nhánh mặc định của bạn là master
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -12,7 +13,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -21,16 +22,16 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Upload Artifact
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'  # Thư mục gốc chứa tệp index.html
+          path: '.'
 
       - name: Deploy to GitHub Pages
         id: deployment
