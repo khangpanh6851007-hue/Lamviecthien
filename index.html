@@ -64,7 +64,7 @@
             color: var(--text-sub);
         }
 
-        /* Widget Ngày Tháng */
+        /* Widget Đồng Hồ & Ngày Tháng */
         .widget-box {
             background: rgba(15, 23, 42, 0.6);
             border-radius: 12px;
@@ -79,6 +79,51 @@
         .widget-box span i {
             color: var(--accent-gold);
             margin-right: 6px;
+        }
+        .live-clock {
+            font-weight: 600;
+            color: var(--accent-gold);
+        }
+
+        /* Panel Đếm Ngược 100 Năm Ân Xá */
+        .amnesty-countdown-panel {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(30, 41, 59, 0.8));
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 14px;
+            padding: 16px;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .amnesty-countdown-panel h3 {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #fca5a5;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin-top: 8px;
+        }
+        .countdown-item {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 8px;
+            padding: 8px 4px;
+        }
+        .countdown-value {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+        .countdown-label {
+            font-size: 9px;
+            color: var(--text-sub);
+            text-transform: uppercase;
+            margin-top: 2px;
         }
 
         /* Tính năng Tích Phước Mới */
@@ -216,10 +261,33 @@
             <p>Hệ thống hỗ trợ tu tâm tích phước hằng ngày</p>
         </div>
 
-        <!-- Widget Lịch -->
+        <!-- Widget Đồng Hồ & Ngày Tháng -->
         <div class="widget-box">
             <span id="dateDisplay"><i class="fa-solid fa-calendar-day"></i> Đang cập nhật...</span>
-            <span id="lunarStatus" style="color: #4ade80; font-weight: 600;"><i class="fa-solid fa-spa"></i> Ngày Thường</span>
+            <span class="live-clock" id="liveClock"><i class="fa-solid fa-clock"></i> 00:00:00</span>
+        </div>
+
+        <!-- Panel Đếm Ngược 100 Năm Ân Xá Nhân Loại -->
+        <div class="amnesty-countdown-panel">
+            <h3><i class="fa-solid fa-hourglass-end"></i> Đếm Ngược 100 Năm Ân Xá Nhân Loại</h3>
+            <div class="countdown-grid">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="cdYears">00</div>
+                    <div class="countdown-label">Năm</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="cdDays">00</div>
+                    <div class="countdown-label">Ngày</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="cdHours">00</div>
+                    <div class="countdown-label">Giờ</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="cdSecs">00</div>
+                    <div class="countdown-label">Giây</div>
+                </div>
+            </div>
         </div>
 
         <!-- Nút Tích Phước -->
@@ -303,6 +371,60 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // --- 1. ĐỒNG HỒ TỰ ĐỘNG & NGÀY THÁNG ---
+            const now = new Date();
+            const dateString = now.toLocaleDateString('vi-VN', { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' });
+            const dateDisplay = document.getElementById('dateDisplay');
+            if (dateDisplay) dateDisplay.innerHTML = `<i class="fa-solid fa-calendar-day"></i> ${dateString}`;
+
+            const liveClock = document.getElementById('liveClock');
+            function updateClock() {
+                const d = new Date();
+                const hours = String(d.getHours()).padStart(2, '0');
+                const minutes = String(d.getMinutes()).padStart(2, '0');
+                const seconds = String(d.getSeconds()).padStart(2, '0');
+                if (liveClock) {
+                    liveClock.innerHTML = `<i class="fa-solid fa-clock"></i> ${hours}:${minutes}:${seconds}`;
+                }
+            }
+            setInterval(updateClock, 1000);
+            updateClock();
+
+            // --- 2. ĐẾM NGƯỢC 100 NĂM ÂN XÁ CHO TOÀN THỂ NHÂN LOẠI ---
+            // Thiết lập mốc kết thúc 100 năm (Ví dụ: Giả định chu kỳ bắt đầu từ 2024 kết thúc vào năm 2124)
+            const amnestyTargetDate = new Date("December 31, 2124 23:59:59").getTime();
+
+            const cdYears = document.getElementById('cdYears');
+            const cdDays = document.getElementById('cdDays');
+            const cdHours = document.getElementById('cdHours');
+            const cdSecs = document.getElementById('cdSecs');
+
+            function updateAmnestyCountdown() {
+                const currentTime = new Date().getTime();
+                const timeLeft = amnestyTargetDate - currentTime;
+
+                if (timeLeft > 0) {
+                    const totalSeconds = Math.floor(timeLeft / 1000);
+                    const years = Math.floor(totalSeconds / (3600 * 24 * 365));
+                    const days = Math.floor((totalSeconds % (3600 * 24 * 365)) / (3600 * 24));
+                    const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+                    const seconds = totalSeconds % 60;
+
+                    if (cdYears) cdYears.innerText = String(years).padStart(2, '0');
+                    if (cdDays) cdDays.innerText = String(days).padStart(3, '0');
+                    if (cdHours) cdHours.innerText = String(hours).padStart(2, '0');
+                    if (cdSecs) cdSecs.innerText = String(seconds).padStart(2, '0');
+                } else {
+                    if (cdYears) cdYears.innerText = "00";
+                    if (cdDays) cdDays.innerText = "000";
+                    if (cdHours) cdHours.innerText = "00";
+                    if (cdSecs) cdSecs.innerText = "00";
+                }
+            }
+            setInterval(updateAmnestyCountdown, 1000);
+            updateAmnestyCountdown();
+
+            // --- 3. TÍNH NĂNG TÍCH PHƯỚC ---
             let count = parseInt(localStorage.getItem('tram_phuoc_duc_count')) || 108;
             const countDisplay = document.getElementById('countDisplay');
             const blessingBtn = document.getElementById('blessingBtn');
@@ -319,6 +441,7 @@
                 });
             }
 
+            // --- 4. LỜI KHUYÊN TÂM LINH ---
             const advices = [
                 { text: "Tâm thiện hướng đi đâu cũng gặp bình an.", author: "- Kinh nghiệm sống" },
                 { text: "Bố thí bằng tấm lòng chân thành thì phước báo tự khắc sinh trưởng.", author: "- Luật Nhân Quả" },
@@ -339,23 +462,6 @@
 
             loadAdvice();
             if (changeAdviceBtn) changeAdviceBtn.addEventListener('click', loadAdvice);
-
-            const now = new Date();
-            const dateString = now.toLocaleDateString('vi-VN', { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' });
-            const dateDisplay = document.getElementById('dateDisplay');
-            if (dateDisplay) dateDisplay.innerHTML = `<i class="fa-solid fa-calendar-day"></i> ${dateString}`;
-
-            const day = now.getDate();
-            const lunarStatus = document.getElementById('lunarStatus');
-            if (lunarStatus) {
-                if (day === 1 || day === 15 || day === 14 || day === 30) {
-                    lunarStatus.innerHTML = `<i class="fa-solid fa-leaf"></i> Gần Ngày Chay`;
-                    lunarStatus.style.color = "#fbbf24";
-                } else {
-                    lunarStatus.innerHTML = `<i class="fa-solid fa-spa"></i> Ngày Thường`;
-                    lunarStatus.style.color = "#4ade80";
-                }
-            }
         });
     </script>
 </body>
