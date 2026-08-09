@@ -2,18 +2,21 @@ name: Deploy Trạm Phước Đức to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+  branches: [ "main", "master" ]
+
+  # Cho phép kích hoạt thủ công từ tab Actions trên GitHub
   workflow_dispatch:
 
+# Thiết lập quyền cho GITHUB_TOKEN để triển khai lên GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Chỉ cho phép một tiến trình triển khai chạy đồng thời
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -31,6 +34,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          # Tải lên toàn bộ thư mục gốc chứa file index.html
           path: '.'
 
       - name: Deploy to GitHub Pages
