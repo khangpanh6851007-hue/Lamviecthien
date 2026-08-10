@@ -1,72 +1,45 @@
-name: Production CI/CD Pipeline
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: read
-  id-token: write # Required for secure OIDC cloud provider authentication
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
-  validate-and-test:
-    name: Lint, Test & Build
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js Environment
-        uses: actions/setup-node@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          node-version: '22.x'
-          cache: 'npm'
+          path: '.'
 
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: Run Linter & Type Check
-        run: |
-          npm run lint
-          npm run typecheck
-
-      - name: Run Unit Tests
-        run: npm run test:ci
-
-      - name: Build Production Artifacts
-        run: npm run build
-
-  deploy-to-production:
-    name: Deploy to Production
-    needs: validate-and-test
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+  deploy:
     environment:
-      name: production
-      url: https://your-production-url.com
-
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+```eof
 
-      - name: Download Build Artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: build-output
-          path: dist
-
-      - name: Authenticate to Cloud Provider
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: arn:aws:iam::123456789012:role/GitHubActionsDeploymentRole
-          aws-region: us-east-1
-
-      - name: Deploy to Cloud / Server
-        run: |
-          echo "Starting deployment sequence..."
-          # Example sync command
-          # aws s3 sync ./dist s3://your-production-bucket
-          echo "Deployment completed successfully!"
+Your GitHub Actions deploy configuration file is ready! Let me know if you need any adjustments or additional automation steps.
