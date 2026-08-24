@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Trạm Phước Đức - Tâm Linh Modern</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --bg-color: #0f172a;
@@ -26,7 +22,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             min-height: 100vh;
@@ -46,7 +42,6 @@
             padding: 20px;
         }
 
-        /* Header */
         .app-header {
             text-align: center;
             margin-bottom: 20px;
@@ -64,7 +59,6 @@
             color: var(--text-sub);
         }
 
-        /* Widget Đồng Hồ & Ngày Tháng */
         .widget-box {
             background: rgba(15, 23, 42, 0.6);
             border-radius: 12px;
@@ -72,20 +66,42 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             font-size: 13px;
             border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .widget-box span i {
-            color: var(--accent-gold);
-            margin-right: 6px;
         }
         .live-clock {
             font-weight: 600;
             color: var(--accent-gold);
         }
 
-        /* Panel Đếm Ngược 100 Năm Ân Xá */
+        .hoalac-clock-panel {
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(30, 41, 59, 0.8));
+            border: 1px solid rgba(147, 51, 234, 0.3);
+            border-radius: 12px;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            font-size: 13px;
+        }
+        .hoalac-info h4 {
+            font-size: 12px;
+            font-weight: 600;
+            color: #d8b4fe;
+            margin-bottom: 2px;
+        }
+        .hoalac-info p {
+            font-size: 10px;
+            color: var(--text-sub);
+        }
+        .hoalac-clock-display {
+            font-weight: 700;
+            color: #e9d5ff;
+            font-size: 15px;
+        }
+
         .amnesty-countdown-panel {
             background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(30, 41, 59, 0.8));
             border: 1px solid rgba(239, 68, 68, 0.3);
@@ -126,7 +142,6 @@
             margin-top: 2px;
         }
 
-        /* Tính năng Tích Phước Mới */
         .blessing-panel {
             background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(30, 41, 59, 0.8));
             border: 1px solid var(--border-color);
@@ -154,7 +169,6 @@
             align-items: center;
             gap: 8px;
             box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
-            transition: transform 0.1s;
         }
         .action-btn:active {
             transform: scale(0.95);
@@ -168,7 +182,6 @@
             color: var(--accent-gold);
         }
 
-        /* Lời Khuyên Tâm Linh */
         .advice-box {
             background: rgba(15, 23, 42, 0.4);
             border-left: 3px solid var(--accent-gold);
@@ -177,7 +190,6 @@
             margin-bottom: 16px;
         }
         .advice-text {
-            font-family: 'Lora', serif;
             font-style: italic;
             font-size: 13px;
             line-height: 1.4;
@@ -200,7 +212,6 @@
             font-weight: 600;
         }
 
-        /* Danh Sách Liên Kết Web */
         .nav-links {
             display: flex;
             flex-direction: column;
@@ -221,26 +232,21 @@
             font-size: 13px;
             font-weight: 500;
             border: 1px solid rgba(255, 255, 255, 0.04);
-            transition: background 0.2s;
         }
-        .nav-item:hover, .nav-item:active {
+        .nav-item:hover {
             background: rgba(245, 158, 11, 0.1);
             border-color: var(--border-color);
         }
         .nav-item span {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
-        .nav-item i.fa-solid {
-            color: var(--accent-gold);
-        }
-        .nav-item .fa-chevron-right {
-            font-size: 10px;
+        .arrow {
+            font-size: 12px;
             color: var(--text-sub);
         }
 
-        /* Footer */
         .app-footer {
             text-align: center;
             margin-top: 16px;
@@ -255,21 +261,26 @@
 <body>
 
     <div class="app-container">
-        <!-- Tiêu đề -->
         <div class="app-header">
             <h1>Trạm Phước Đức</h1>
             <p>Hệ thống hỗ trợ tu tâm tích phước hằng ngày</p>
         </div>
 
-        <!-- Widget Đồng Hồ & Ngày Tháng -->
         <div class="widget-box">
-            <span id="dateDisplay"><i class="fa-solid fa-calendar-day"></i> Đang cập nhật...</span>
-            <span class="live-clock" id="liveClock"><i class="fa-solid fa-clock"></i> 00:00:00</span>
+            <span id="dateDisplay">📅 Đang cập nhật...</span>
+            <span class="live-clock" id="liveClock">⏰ 00:00:00</span>
         </div>
 
-        <!-- Panel Đếm Ngược 100 Năm Ân Xá Nhân Loại -->
+        <div class="hoalac-clock-panel">
+            <div class="hoalac-info">
+                <h4>🌌 Cung Trời Hóa Lạc</h4>
+                <p>1 Ngày Thiên Giới = 800 Năm Nhân Gian</p>
+            </div>
+            <div class="hoalac-clock-display" id="hoalacClock">⌛ 00:00:00</div>
+        </div>
+
         <div class="amnesty-countdown-panel">
-            <h3><i class="fa-solid fa-hourglass-end"></i> Đếm Ngược 100 Năm Ân Xá Nhân Loại</h3>
+            <h3>⏳ Đếm Ngược 100 Năm Ân Xá Nhân Loại</h3>
             <div class="countdown-grid">
                 <div class="countdown-item">
                     <div class="countdown-value" id="cdYears">00</div>
@@ -290,16 +301,14 @@
             </div>
         </div>
 
-        <!-- Nút Tích Phước -->
         <div class="blessing-panel">
             <h3>Gieo Duyên Lành Hằng Ngày</h3>
             <button class="action-btn" id="blessingBtn" type="button">
-                <i class="fa-solid fa-hands-praying"></i> Niệm 1 Câu Lành
+                🙏 Niệm 1 Câu Lành
             </button>
-            <div class="counter-display">Tổng số niệm lành đã tích lũy: <b id="countDisplay">0</b></div>
+            <div class="counter-display">Tổng số niệm lành đã tích lũy: <b id="countDisplay">108</b></div>
         </div>
 
-        <!-- Lời Khuyên -->
         <div class="advice-box">
             <div class="advice-text" id="adviceText">"Tâm thiện hướng đi đâu cũng gặp bình an."</div>
             <div class="advice-footer">
@@ -308,75 +317,74 @@
             </div>
         </div>
 
-        <!-- Danh Sách Liên Kết Nhanh -->
         <div class="nav-links">
             <a href="https://khangpanh6851007-hue.github.io/PGHH/" class="nav-item" target="_blank">
-                <span><i class="fa-solid fa-dharmachakra"></i>Lời Dạy Của Đức Huỳnh Giáo Chủ (Huỳnh Phú Sổ)- Phật Giáo Hòa Hảo</span>
-                <i class="fa-solid fa-chevron-right"></i>
+                <span>☸️ Lời Dạy Của Đức Huỳnh Giáo Chủ</span>
+                <span class="arrow">▶</span>
             </a>
             <a href="https://khangpanh6851007-hue.github.io/NamM-iBiQu-nTh-mB-T-t/" class="nav-item" target="_blank">
-                <span><i class="fa-solid fa-hands-bubbles"></i> Nam Mô Đại Bi Quán Thế Âm Bồ Tát</span>
-                <i class="fa-solid fa-chevron-right"></i>
+                <span>🪷 Nam Mô Đại Bi Quán Thế Âm Bồ Tát</span>
+                <span class="arrow">▶</span>
             </a>
             <a href="https://khangpanh6851007-hue.github.io/Linhhontrove/" class="nav-item" target="_blank">
-                <span><i class="fa-solid fa-unlock"></i> TỪNG PHẠT CHÚNG SINH -PHẠM LỖI KHÔNG SỬA</span>
-                <i class="fa-solid fa-chevron-right"></i>
+                <span>🔓 Từng Phạt Chúng Sinh - Phạm Lỗi Không Sửa</span>
+                <span class="arrow">▶</span>
             </a>
             <a href="https://www.windy.com" class="nav-item" target="_blank">
-                <span><i class="fa-solid fa-cloud-sun"></i> Windy Thời Tiết</span>
-                <i class="fa-solid fa-chevron-right"></i>
+                <span>⛅ Windy Thời Tiết</span>
+                <span class="arrow">▶</span>
             </a>
             <a href="https://khangpanh6851007-hue.github.io/Samtrangtrinh/" class="nav-item" target="_blank">
-                <span><i class="fa-solid fa-book-reader"></i> Sấm Trạng Trình</span>
-                <i class="fa-solid fa-chevron-right"></i>
+                <span>📖 Sấm Trạng Trình</span>
+                <span class="arrow">▶</span>
             </a>
             <a href="https://khangpanh6851007-hue.github.io/Cungtroihoalac/" class="nav-item" target="_blank">
-                <span><i class="fa-solid fa-cloud-moon"></i> Cung Trời Hóa Lạc</span>
-                <i class="fa-solid fa-chevron-right"></i>
+                <span>🌌 Cung Trời Hóa Lạc</span>
+                <span class="arrow">▶</span>
             </a>
             <a href="https://khangpanh6851007-hue.github.io/Cungtroihoalacmobile/" class="nav-item" target="_blank">
-                <span><i class="fa-solid fa-star"></i> Tích Đức Ở Cung Trời Hóa Lạc</span>
-                <i class="fa-solid fa-chevron-right"></i>
+                <span>✨ Tích Đức Ở Cung Trời Hóa Lạc</span>
+                <span class="arrow">▶</span>
             </a>
             <a href="https://khangpanh6851007-hue.github.io/Ph-tth-chca-/" class="nav-item" target="_blank">
-                <span><i class="fa-solid fa-om"></i> Tích Phước Cực Lạc</span>
-                <i class="fa-solid fa-chevron-right"></i>
+                <span>🕉️ Tích Phước Cực Lạc</span>
+                <span class="arrow">▶</span>
             </a>
             <a href="https://khangpanh6851007-hue.github.io/Tayphuongcuclac" class="nav-item" target="_blank">
-                <span><i class="fa-solid fa-place-of-worship"></i> Tây Phương Cực Lạc</span>
-                <i class="fa-solid fa-chevron-right"></i>
+                <span>🛕 Tây Phương Cực Lạc</span>
+                <span class="arrow">▶</span>
             </a>
             <a href="https://khangpanh6851007-hue.github.io/CuocPhanxetcuoicung/" class="nav-item" target="_blank">
-                <span><i class="fa-solid fa-scale-balanced"></i> Cuộc Đại Phán Xét Cuối Cùng Của Nhân Loại</span>
-                <i class="fa-solid fa-chevron-right"></i>
+                <span>⚖️ Cuộc Đại Phán Xét Cuối Cùng</span>
+                <span class="arrow">▶</span>
             </a>
             <a href="https://khangpanh6851007-hue.github.io/Ng-c-/" class="nav-item" target="_blank">
-                <span><i class="fa-solid fa-chess-king"></i> Ngọc Đế Ban Ân Xá</span>
-                <i class="fa-solid fa-chevron-right"></i>
+                <span>👑 Ngọc Đế Ban Ân Xá</span>
+                <span class="arrow">▶</span>
             </a>
             <a href="https://khangpanh6851007-hue.github.io/Bangphongthan/" class="nav-item" target="_blank">
-                <span><i class="fa-solid fa-scroll"></i> Bảng Phong Thần</span>
-                <i class="fa-solid fa-chevron-right"></i>
+                <span>📜 Bảng Phong Thần</span>
+                <span class="arrow">▶</span>
             </a>
             <a href="https://khangpanh6851007-hue.github.io/Thoikymatphap/" class="nav-item" target="_blank">
-                <span><i class="fa-solid fa-hourglass-half"></i> Thời Kỳ Mạt Pháp</span>
-                <i class="fa-solid fa-chevron-right"></i>
+                <span>⏳ Thời Kỳ Mạt Pháp</span>
+                <span class="arrow">▶</span>
             </a>
             <a href="https://khangpanh6851007-hue.github.io/Thuongnguonducthanh/" class="nav-item" target="_blank">
-                <span><i class="fa-solid fa-sun"></i> Thượng Ngươn Thánh Đức</span>
-                <i class="fa-solid fa-chevron-right"></i>
+                <span>☀️ Thượng Ngươn Thánh Đức</span>
+                <span class="arrow">▶</span>
             </a>
             <a href="https://khangpanh6851007-hue.github.io/10-i-uQuyYTamB-o-/" class="nav-item" target="_blank">
-                <span><i class="fa-solid fa-book-bookmark"></i> 10 Điều Quy Y Tam Bảo</span>
-                <i class="fa-solid fa-chevron-right"></i>
+                <span>📖 10 Điều Quy Y Tam Bảo</span>
+                <span class="arrow">▶</span>
             </a>
             <a href="https://khangpanh6851007-hue.github.io/Phatthaytayan/" class="nav-item" target="_blank">
-                <span><i class="fa-solid fa-user-tie"></i> Phật Thầy Tây An</span>
-                <i class="fa-solid fa-chevron-right"></i>
+                <span>👤 Phật Thầy Tây An</span>
+                <span class="arrow">▶</span>
             </a>
             <a href="https://khangpanh6851007-hue.github.io/Phatdilac/" class="nav-item" target="_blank">
-                <span><i class="fa-solid fa-seedling"></i> Nói Về Hạ Sanh Đức Phật Di Lặc</span>
-                <i class="fa-solid fa-chevron-right"></i>
+                <span>🌱 Nói Về Hạ Sanh Đức Phật Di Lặc</span>
+                <span class="arrow">▶</span>
             </a>
         </div>
 
@@ -386,98 +394,124 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // --- 1. ĐỒNG HỒ TỰ ĐỘNG & NGÀY THÁNG ---
-            const now = new Date();
-            const dateString = now.toLocaleDateString('vi-VN', { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' });
-            const dateDisplay = document.getElementById('dateDisplay');
-            if (dateDisplay) dateDisplay.innerHTML = `<i class="fa-solid fa-calendar-day"></i> ${dateString}`;
+        (function() {
+            // 1. Ngày tháng & Đồng hồ nhân gian
+            try {
+                const now = new Date();
+                const dateString = now.toLocaleDateString('vi-VN', { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' });
+                const dateDisplay = document.getElementById('dateDisplay');
+                if (dateDisplay) dateDisplay.innerText = `📅 ${dateString}`;
 
-            const liveClock = document.getElementById('liveClock');
-            function updateClock() {
-                const d = new Date();
-                const hours = String(d.getHours()).padStart(2, '0');
-                const minutes = String(d.getMinutes()).padStart(2, '0');
-                const seconds = String(d.getSeconds()).padStart(2, '0');
-                if (liveClock) {
-                    liveClock.innerHTML = `<i class="fa-solid fa-clock"></i> ${hours}:${minutes}:${seconds}`;
+                const liveClock = document.getElementById('liveClock');
+                function updateClock() {
+                    const d = new Date();
+                    const hours = String(d.getHours()).padStart(2, '0');
+                    const minutes = String(d.getMinutes()).padStart(2, '0');
+                    const seconds = String(d.getSeconds()).padStart(2, '0');
+                    if (liveClock) {
+                        liveClock.innerText = `⏰ ${hours}:${minutes}:${seconds}`;
+                    }
                 }
-            }
-            setInterval(updateClock, 1000);
-            updateClock();
+                setInterval(updateClock, 1000);
+                updateClock();
+            } catch (e) {}
 
-            // --- 2. ĐẾM NGƯỢC 100 NĂM ÂN XÁ CHO TOÀN THỂ NHÂN LOẠI ---
-            const amnestyTargetDate = new Date("December 31, 2124 23:59:59").getTime();
+            // 2. Đồng hồ Cung Trời Hóa Lạc
+            try {
+                const hoalacClock = document.getElementById('hoalacClock');
+                function updateHoaLacClock() {
+                    const humanSeconds = Math.floor(Date.now() / 1000);
+                    const heavenlySecondsTotal = Math.floor(humanSeconds / 292200);
+                    const currentHeavenlySeconds = heavenlySecondsTotal % 86400;
 
-            const cdYears = document.getElementById('cdYears');
-            const cdDays = document.getElementById('cdDays');
-            const cdHours = document.getElementById('cdHours');
-            const cdSecs = document.getElementById('cdSecs');
+                    const h = String(Math.floor(currentHeavenlySeconds / 3600)).padStart(2, '0');
+                    const m = String(Math.floor((currentHeavenlySeconds % 3600) / 60)).padStart(2, '0');
+                    const s = String(currentHeavenlySeconds % 60).padStart(2, '0');
 
-            function updateAmnestyCountdown() {
-                const currentTime = new Date().getTime();
-                const timeLeft = amnestyTargetDate - currentTime;
-
-                if (timeLeft > 0) {
-                    const totalSeconds = Math.floor(timeLeft / 1000);
-                    const years = Math.floor(totalSeconds / (3600 * 24 * 365));
-                    const days = Math.floor((totalSeconds % (3600 * 24 * 365)) / (3600 * 24));
-                    const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
-                    const seconds = totalSeconds % 60;
-
-                    if (cdYears) cdYears.innerText = String(years).padStart(2, '0');
-                    if (cdDays) cdDays.innerText = String(days).padStart(3, '0');
-                    if (cdHours) cdHours.innerText = String(hours).padStart(2, '0');
-                    if (cdSecs) cdSecs.innerText = String(seconds).padStart(2, '0');
-                } else {
-                    if (cdYears) cdYears.innerText = "00";
-                    if (cdDays) cdDays.innerText = "000";
-                    if (cdHours) cdHours.innerText = "00";
-                    if (cdSecs) cdSecs.innerText = "00";
+                    if (hoalacClock) {
+                        hoalacClock.innerText = `⌛ ${h}:${m}:${s}`;
+                    }
                 }
-            }
-            setInterval(updateAmnestyCountdown, 1000);
-            updateAmnestyCountdown();
+                setInterval(updateHoaLacClock, 1000);
+                updateHoaLacClock();
+            } catch (e) {}
 
-            // --- 3. TÍNH NĂNG TÍCH PHƯỚC ---
-            let count = parseInt(localStorage.getItem('tram_phuoc_duc_count')) || 108;
-            const countDisplay = document.getElementById('countDisplay');
-            const blessingBtn = document.getElementById('blessingBtn');
+            // 3. Đếm ngược 100 năm ân xá
+            try {
+                const amnestyTargetDate = new Date(2124, 11, 31, 23, 59, 59).getTime();
+                const cdYears = document.getElementById('cdYears');
+                const cdDays = document.getElementById('cdDays');
+                const cdHours = document.getElementById('cdHours');
+                const cdSecs = document.getElementById('cdSecs');
 
-            if (countDisplay) countDisplay.innerText = count;
+                function updateAmnestyCountdown() {
+                    const timeLeft = amnestyTargetDate - Date.now();
+                    if (timeLeft > 0) {
+                        const totalSeconds = Math.floor(timeLeft / 1000);
+                        const years = Math.floor(totalSeconds / (3600 * 24 * 365));
+                        const days = Math.floor((totalSeconds % (3600 * 24 * 365)) / (3600 * 24));
+                        const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+                        const seconds = totalSeconds % 60;
 
-            if (blessingBtn) {
-                blessingBtn.addEventListener('click', function() {
-                    count++;
-                    localStorage.setItem('tram_phuoc_duc_count', count);
-                    if (countDisplay) countDisplay.innerText = count;
-                    blessingBtn.style.transform = "scale(0.95)";
-                    setTimeout(() => { blessingBtn.style.transform = "scale(1)"; }, 100);
-                });
-            }
+                        if (cdYears) cdYears.innerText = String(years).padStart(2, '0');
+                        if (cdDays) cdDays.innerText = String(days).padStart(3, '0');
+                        if (cdHours) cdHours.innerText = String(hours).padStart(2, '0');
+                        if (cdSecs) cdSecs.innerText = String(seconds).padStart(2, '0');
+                    }
+                }
+                setInterval(updateAmnestyCountdown, 1000);
+                updateAmnestyCountdown();
+            } catch (e) {}
 
-            // --- 4. LỜI KHUYÊN TÂM LINH ---
-            const advices = [
-                { text: "Tâm thiện hướng đi đâu cũng gặp bình an.", author: "- Kinh nghiệm sống" },
-                { text: "Bố thí bằng tấm lòng chân thành thì phước báo tự khắc sinh trưởng.", author: "- Luật Nhân Quả" },
-                { text: "Giữ miệng lành, nghĩ điều hay, làm việc tốt chính là cội nguồn của công đức.", author: "- Cổ Đức Sưu Tầm" },
-                { text: "Mỗi ngày gieo một niệm lành, tâm hồn tự khắc nhẹ nhàng thanh thản.", author: "- Trạm Phước Đức" }
-            ];
+            // 4. Tính năng tích phước
+            try {
+                let count = 108;
+                try {
+                    count = parseInt(localStorage.getItem('tram_phuoc_duc_count')) || 108;
+                } catch (err) {}
 
-            const adviceText = document.getElementById('adviceText');
-            const adviceAuthor = document.getElementById('adviceAuthor');
-            const changeAdviceBtn = document.getElementById('changeAdviceBtn');
+                const countDisplay = document.getElementById('countDisplay');
+                const blessingBtn = document.getElementById('blessingBtn');
 
-            function loadAdvice() {
-                const randomIndex = Math.floor(Math.random() * advices.length);
-                const item = advices[randomIndex];
-                if (adviceText) adviceText.innerText = `"${item.text}"`;
-                if (adviceAuthor) adviceAuthor.innerText = item.author;
-            }
+                if (countDisplay) countDisplay.innerText = count;
 
-            loadAdvice();
-            if (changeAdviceBtn) changeAdviceBtn.addEventListener('click', loadAdvice);
-        });
+                if (blessingBtn) {
+                    blessingBtn.addEventListener('click', function() {
+                        count++;
+                        try {
+                            localStorage.setItem('tram_phuoc_duc_count', count);
+                        } catch (err) {}
+                        if (countDisplay) countDisplay.innerText = count;
+                        blessingBtn.style.transform = "scale(0.95)";
+                        setTimeout(() => { blessingBtn.style.transform = "scale(1)"; }, 100);
+                    });
+                }
+            } catch (e) {}
+
+            // 5. Lời khuyên tâm linh
+            try {
+                const advices = [
+                    { text: "Tâm thiện hướng đi đâu cũng gặp bình an.", author: "- Kinh nghiệm sống" },
+                    { text: "Bố thí bằng tấm lòng chân thành thì phước báo tự khắc sinh trưởng.", author: "- Luật Nhân Quả" },
+                    { text: "Giữ miệng lành, nghĩ điều hay, làm việc tốt chính là cội nguồn của công đức.", author: "- Cổ Đức Sưu Tầm" },
+                    { text: "Mỗi ngày gieo một niệm lành, tâm hồn tự khắc nhẹ nhàng thanh thản.", author: "- Trạm Phước Đức" }
+                ];
+
+                const adviceText = document.getElementById('adviceText');
+                const adviceAuthor = document.getElementById('adviceAuthor');
+                const changeAdviceBtn = document.getElementById('changeAdviceBtn');
+
+                function loadAdvice() {
+                    const randomIndex = Math.floor(Math.random() * advices.length);
+                    const item = advices[randomIndex];
+                    if (adviceText) adviceText.innerText = `"${item.text}"`;
+                    if (adviceAuthor) adviceAuthor.innerText = item.author;
+                }
+
+                loadAdvice();
+                if (changeAdviceBtn) changeAdviceBtn.addEventListener('click', loadAdvice);
+            } catch (e) {}
+        })();
     </script>
 </body>
 </html>
