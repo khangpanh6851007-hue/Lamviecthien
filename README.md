@@ -1,37 +1,46 @@
-# 🌟 Trạm Phước Đức - Modern Spiritual App
+# 🌟 Trạm Phước Đức
 
-<div align="center">
+> Hệ thống hỗ trợ tu tâm tích phước hằng ngày, hướng về những giá trị đạo đức, tâm linh và chánh pháp.
 
-![GitHub last commit](https://img.shields.io/github/last-commit/khangpanh6851007-hue/tramphuocduc?color=f59e0b&style=flat-square)
-![HTML5](https://img.shields.io/badge/HTML5-%23E34F26.svg?style=flat-square&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-%231572B6.svg?style=flat-square&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?style=flat-square&logo=javascript&logoColor=black)
-
-Hệ thống ứng dụng web tâm linh hiện đại được thiết kế tinh gọn, hỗ trợ tu tâm, tích phước hằng ngày và theo dõi thời gian hướng về kỷ nguyên mới.
-
-</div>
+[![GitHub Pages](https://img.shields.io/badge/Status-Online%202026-success?style=for-the-badge&logo=github)](https://khangpanh6851007-hue.github.io/)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
 ---
 
-## 🚀 Giới Thiệu
-**Trạm Phước Đức** là một giao diện giao thoa giữa truyền thống tâm linh và công nghệ hiện đại. Dự án được tối ưu hóa cho trải nghiệm trên thiết bị di động (Mobile-first), tích hợp nhiều tiện ích phong phú giúp người dùng dễ dàng truy cập các tài liệu, lời dạy và kinh sách quý báu.
+## ✨ Các Tính Năng Nổi Bật
 
-## ✨ Tính Năng Nổi Bật
-* **⏰ Đồng Hồ & Ngày Tháng Thực:** Cập nhật thời gian trực tiếp theo chuẩn giờ địa phương.
-* **⏳ Đếm Ngược Ân Xá Nhân Loại:** Theo dõi thời gian đếm ngược đến mốc năm 2124.
-* **🙏 Nút Tích Phước (Gieo Duyên Lành):** Tích lũy số niệm lành hằng ngày có lưu trữ bộ nhớ `localStorage`.
-* **📜 Lời Khuyên Tâm Linh Ngẫu Nhiên:** Gợi ý những câu nói hay, mang lại sự bình an trong tâm hồn.
-* **🔗 Kho Liên Kết Nhanh Đa Dạng:** Truy cập nhanh chóng đến các trang thông tin về Phật Giáo, Sấm Trạng Trình, Thời Kỳ Mạt Pháp và Thượng Ngươn Thánh Đức.
+- ⏰ **Đồng Hồ Thời Gian Thực:** Hiển thị ngày tháng và đồng hồ nhân gian chuẩn xác.
+- 🌌 **Đồng Hồ Cung Trời Hóa Lạc:** Mô phỏng quy luật thời gian tâm linh (`1 Ngày Thiên Giới = 800 Năm Nhân Gian`).
+- ⏳ **Đếm Ngược Ân Xá:** Theo dõi mốc thời gian đếm ngược 100 năm ân xá nhân loại.
+- 🙏 **Gieo Duyên Lành Hằng Ngày:** Tính năng tương tác niệm phước tích lũy cá nhân.
+- 📖 **Kho Tàng Liên Kết Tâm Linh:** Tổng hợp các trang web giáo lý Phật giáo Hòa Hảo, Sấm Trạng Trình, Tây Phương Cực Lạc, và nhiều tài nguyên quý giá khác.
+
+---
+
+## 🔗 Danh Sách Các Trang Web Trực Tuyến
+
+Dự án bao gồm hệ thống các trang liên kết nhanh:
+* Lời Dạy Của Đức Huỳnh Giáo Chủ (Phật Giáo Hòa Hảo)
+* Nam Mô Đại Bi Quán Thế Âm Bồ Tát
+* Cung Trời Hóa Lạc & Tích Đức 
+* Sấm Trạng Trình & Cuộc Đại Phán Xét Cuối Cùng
+* Thời Kỳ Mạt Pháp & Thượng Ngươn Thánh Đức
+* Tây Phương Cực Lạc & Phật Thầy Tây An
+
+---
 
 ## 🛠️ Công Nghệ Sử Dụng
-* **HTML5 / CSS3:** Thiết kế giao diện Dark Mode cao cấp với tông màu tối (`#0f172a`) kết hợp điểm nhấn vàng ánh kim (`#f59e0b`).
-* **JavaScript (ES6+):** Xử lý hiệu ứng thời gian thực, bộ đếm ngược thời gian và lưu trữ dữ liệu người dùng cục bộ.
-* **FontAwesome 6 & Google Fonts:** Sử dụng font *Inter* và *Lora* cùng hệ thống biểu tượng sắc nét.
 
-## 📱 Khám Phá Trực Tuyến
-Trang web được triển khai và lưu trữ trực tiếp trên nền tảng **GitHub Pages**, tối ưu riêng cho tài khoản **KhangPanh68**.
+* **Frontend:** HTML5, CSS3 (Modern Flexbox/Grid), JavaScript (Vanilla ES6+).
+* **Giao diện:** Tối ưu hóa tuyệt đối cho thiết bị di động (Mobile Responsive), giao diện tối (Dark Mode) thân thiện với mắt.
+* **Lưu trữ:** GitHub Pages (Cập nhật liên tục năm 2026).
 
 ---
-<div align="center">
-  <i>Thiết kế tận tâm dành riêng cho KhangPanh68 • 2026</i>
-</div>
+
+## 📌 Hướng Dẫn Truy Cập
+
+Truy cập trực tiếp ứng dụng tại: 
+👉 [Trạm Phước Đức trên GitHub Pages](https://khangpanh6851007-hue.github.io/)
+
+---
+*Thiết kế và phát triển dành riêng cho cộng đồng tu tâm tích phước.*
