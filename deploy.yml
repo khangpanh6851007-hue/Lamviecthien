@@ -1,45 +1,43 @@
-name: Deploy to GitHub Pages
+name: Deploy Trạm Phước Đức to GitHub Pages
 
 on:
+  # Chạy workflow mỗi khi có lệnh push lên nhánh chính (thường là main hoặc master)
   push:
-    branches:
-      - main
+    branches: ["main"]
+
+  # Cho phép kích hoạt thủ công từ tab Actions trên GitHub
   workflow_dispatch:
 
+# Phân quyền cần thiết cho GITHUB_TOKEN để deploy lên GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Đảm bảo chỉ có một tiến trình deploy chạy tại một thời điểm
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
-
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Checkout mã nguồn
+        uses: actions/checkout@v4
+
+      - name: Cấu hình GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Đóng gói mã nguồn (Upload Artifact)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Tải lên toàn bộ thư mục gốc chứa file index.html của bạn
+          path: '.'
+
+      - name: Tiến hành Deploy lên GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-```eof
-
-Your GitHub Actions deploy configuration file is ready! Let me know if you need any adjustments or additional automation steps.
