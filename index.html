@@ -295,8 +295,8 @@
                     <div class="countdown-label">Giờ</div>
                 </div>
                 <div class="countdown-item">
-                    <div class="countdown-value" id="cdSecs">00</div>
-                    <div class="countdown-label">Giây</div>
+                    <div class="countdown-value" id="cdMins">00</div>
+                    <div class="countdown-label">Phút</div>
                 </div>
             </div>
         </div>
@@ -358,6 +358,10 @@
                 <span>⚖️ Cuộc Đại Phán Xét Cuối Cùng</span>
                 <span class="arrow">▶</span>
             </a>
+            <a href="https://khangpanh6851007-hue.github.io/Luatnhanquaoamphu/" class="nav-item" target="_blank">
+                <span>📜 Luật Nhân Quả Ở Âm Phủ</span>
+                <span class="arrow">▶</span>
+            </a>
             <a href="https://khangpanh6851007-hue.github.io/Ng-c-/" class="nav-item" target="_blank">
                 <span>👑 Ngọc Đế Ban Ân Xá</span>
                 <span class="arrow">▶</span>
@@ -394,124 +398,116 @@
     </div>
 
     <script>
-        (function() {
+        document.addEventListener("DOMContentLoaded", function() {
             // 1. Ngày tháng & Đồng hồ nhân gian
-            try {
-                const now = new Date();
-                const dateString = now.toLocaleDateString('vi-VN', { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' });
-                const dateDisplay = document.getElementById('dateDisplay');
-                if (dateDisplay) dateDisplay.innerText = `📅 ${dateString}`;
+            const now = new Date();
+            const daysOfWeek = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+            const dayName = daysOfWeek[now.getDay()];
+            const dateString = `${dayName}, ${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`;
+            const dateDisplay = document.getElementById('dateDisplay');
+            if (dateDisplay) dateDisplay.innerText = `📅 ${dateString}`;
 
-                const liveClock = document.getElementById('liveClock');
-                function updateClock() {
-                    const d = new Date();
-                    const hours = String(d.getHours()).padStart(2, '0');
-                    const minutes = String(d.getMinutes()).padStart(2, '0');
-                    const seconds = String(d.getSeconds()).padStart(2, '0');
-                    if (liveClock) {
-                        liveClock.innerText = `⏰ ${hours}:${minutes}:${seconds}`;
-                    }
+            const liveClock = document.getElementById('liveClock');
+            function updateClock() {
+                const d = new Date();
+                const hours = String(d.getHours()).padStart(2, '0');
+                const minutes = String(d.getMinutes()).padStart(2, '0');
+                const seconds = String(d.getSeconds()).padStart(2, '0');
+                if (liveClock) {
+                    liveClock.innerText = `⏰ ${hours}:${minutes}:${seconds}`;
                 }
-                setInterval(updateClock, 1000);
-                updateClock();
-            } catch (e) {}
+            }
+            setInterval(updateClock, 1000);
+            updateClock();
 
             // 2. Đồng hồ Cung Trời Hóa Lạc
-            try {
-                const hoalacClock = document.getElementById('hoalacClock');
-                function updateHoaLacClock() {
-                    const humanSeconds = Math.floor(Date.now() / 1000);
-                    const heavenlySecondsTotal = Math.floor(humanSeconds / 292200);
-                    const currentHeavenlySeconds = heavenlySecondsTotal % 86400;
+            const hoalacClock = document.getElementById('hoalacClock');
+            function updateHoaLacClock() {
+                const humanSeconds = Math.floor(Date.now() / 1000);
+                const heavenlySecondsTotal = Math.floor(humanSeconds / 292200);
+                const currentHeavenlySeconds = heavenlySecondsTotal % 86400;
 
-                    const h = String(Math.floor(currentHeavenlySeconds / 3600)).padStart(2, '0');
-                    const m = String(Math.floor((currentHeavenlySeconds % 3600) / 60)).padStart(2, '0');
-                    const s = String(currentHeavenlySeconds % 60).padStart(2, '0');
+                const h = String(Math.floor(currentHeavenlySeconds / 3600)).padStart(2, '0');
+                const m = String(Math.floor((currentHeavenlySeconds % 3600) / 60)).padStart(2, '0');
+                const s = String(currentHeavenlySeconds % 60).padStart(2, '0');
 
-                    if (hoalacClock) {
-                        hoalacClock.innerText = `⌛ ${h}:${m}:${s}`;
-                    }
+                if (hoalacClock) {
+                    hoalacClock.innerText = `⌛ ${h}:${m}:${s}`;
                 }
-                setInterval(updateHoaLacClock, 1000);
-                updateHoaLacClock();
-            } catch (e) {}
+            }
+            setInterval(updateHoaLacClock, 1000);
+            updateHoaLacClock();
 
             // 3. Đếm ngược 100 năm ân xá
-            try {
-                const amnestyTargetDate = new Date(2124, 11, 31, 23, 59, 59).getTime();
-                const cdYears = document.getElementById('cdYears');
-                const cdDays = document.getElementById('cdDays');
-                const cdHours = document.getElementById('cdHours');
-                const cdSecs = document.getElementById('cdSecs');
+            const amnestyTargetDate = new Date(2124, 11, 31, 23, 59, 59).getTime();
+            const cdYears = document.getElementById('cdYears');
+            const cdDays = document.getElementById('cdDays');
+            const cdHours = document.getElementById('cdHours');
+            const cdMins = document.getElementById('cdMins');
 
-                function updateAmnestyCountdown() {
-                    const timeLeft = amnestyTargetDate - Date.now();
-                    if (timeLeft > 0) {
-                        const totalSeconds = Math.floor(timeLeft / 1000);
-                        const years = Math.floor(totalSeconds / (3600 * 24 * 365));
-                        const days = Math.floor((totalSeconds % (3600 * 24 * 365)) / (3600 * 24));
-                        const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
-                        const seconds = totalSeconds % 60;
+            function updateAmnestyCountdown() {
+                const timeLeft = amnestyTargetDate - Date.now();
+                if (timeLeft > 0) {
+                    const totalSeconds = Math.floor(timeLeft / 1000);
+                    const years = Math.floor(totalSeconds / (3600 * 24 * 365));
+                    const days = Math.floor((totalSeconds % (3600 * 24 * 365)) / (3600 * 24));
+                    const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+                    const minutes = Math.floor((totalSeconds % 3600) / 60);
 
-                        if (cdYears) cdYears.innerText = String(years).padStart(2, '0');
-                        if (cdDays) cdDays.innerText = String(days).padStart(3, '0');
-                        if (cdHours) cdHours.innerText = String(hours).padStart(2, '0');
-                        if (cdSecs) cdSecs.innerText = String(seconds).padStart(2, '0');
-                    }
+                    if (cdYears) cdYears.innerText = String(years).padStart(2, '0');
+                    if (cdDays) cdDays.innerText = String(days).padStart(3, '0');
+                    if (cdHours) cdHours.innerText = String(hours).padStart(2, '0');
+                    if (cdMins) cdMins.innerText = String(minutes).padStart(2, '0');
                 }
-                setInterval(updateAmnestyCountdown, 1000);
-                updateAmnestyCountdown();
-            } catch (e) {}
+            }
+            setInterval(updateAmnestyCountdown, 1000);
+            updateAmnestyCountdown();
 
             // 4. Tính năng tích phước
+            let count = 108;
             try {
-                let count = 108;
-                try {
-                    count = parseInt(localStorage.getItem('tram_phuoc_duc_count')) || 108;
-                } catch (err) {}
+                count = parseInt(localStorage.getItem('tram_phuoc_duc_count')) || 108;
+            } catch (err) {}
 
-                const countDisplay = document.getElementById('countDisplay');
-                const blessingBtn = document.getElementById('blessingBtn');
+            const countDisplay = document.getElementById('countDisplay');
+            const blessingBtn = document.getElementById('blessingBtn');
 
-                if (countDisplay) countDisplay.innerText = count;
+            if (countDisplay) countDisplay.innerText = count;
 
-                if (blessingBtn) {
-                    blessingBtn.addEventListener('click', function() {
-                        count++;
-                        try {
-                            localStorage.setItem('tram_phuoc_duc_count', count);
-                        } catch (err) {}
-                        if (countDisplay) countDisplay.innerText = count;
-                        blessingBtn.style.transform = "scale(0.95)";
-                        setTimeout(() => { blessingBtn.style.transform = "scale(1)"; }, 100);
-                    });
-                }
-            } catch (e) {}
+            if (blessingBtn) {
+                blessingBtn.addEventListener('click', function() {
+                    count++;
+                    try {
+                        localStorage.setItem('tram_phuoc_duc_count', count);
+                    } catch (err) {}
+                    if (countDisplay) countDisplay.innerText = count;
+                    blessingBtn.style.transform = "scale(0.95)";
+                    setTimeout(() => { blessingBtn.style.transform = "scale(1)"; }, 100);
+                });
+            }
 
             // 5. Lời khuyên tâm linh
-            try {
-                const advices = [
-                    { text: "Tâm thiện hướng đi đâu cũng gặp bình an.", author: "- Kinh nghiệm sống" },
-                    { text: "Bố thí bằng tấm lòng chân thành thì phước báo tự khắc sinh trưởng.", author: "- Luật Nhân Quả" },
-                    { text: "Giữ miệng lành, nghĩ điều hay, làm việc tốt chính là cội nguồn của công đức.", author: "- Cổ Đức Sưu Tầm" },
-                    { text: "Mỗi ngày gieo một niệm lành, tâm hồn tự khắc nhẹ nhàng thanh thản.", author: "- Trạm Phước Đức" }
-                ];
+            const advices = [
+                { text: "Tâm thiện hướng đi đâu cũng gặp bình an.", author: "- Kinh nghiệm sống" },
+                { text: "Bố thí bằng tấm lòng chân thành thì phước báo tự khắc sinh trưởng.", author: "- Luật Nhân Quả" },
+                { text: "Giữ miệng lành, nghĩ điều hay, làm việc tốt chính là cội nguồn của công đức.", author: "- Cổ Đức Sưu Tầm" },
+                { text: "Mỗi ngày gieo một niệm lành, tâm hồn tự khắc nhẹ nhàng thanh thản.", author: "- Trạm Phước Đức" }
+            ];
 
-                const adviceText = document.getElementById('adviceText');
-                const adviceAuthor = document.getElementById('adviceAuthor');
-                const changeAdviceBtn = document.getElementById('changeAdviceBtn');
+            const adviceText = document.getElementById('adviceText');
+            const adviceAuthor = document.getElementById('adviceAuthor');
+            const changeAdviceBtn = document.getElementById('changeAdviceBtn');
 
-                function loadAdvice() {
-                    const randomIndex = Math.floor(Math.random() * advices.length);
-                    const item = advices[randomIndex];
-                    if (adviceText) adviceText.innerText = `"${item.text}"`;
-                    if (adviceAuthor) adviceAuthor.innerText = item.author;
-                }
+            function loadAdvice() {
+                const randomIndex = Math.floor(Math.random() * advices.length);
+                const item = advices[randomIndex];
+                if (adviceText) adviceText.innerText = `"${item.text}"`;
+                if (adviceAuthor) adviceAuthor.innerText = item.author;
+            }
 
-                loadAdvice();
-                if (changeAdviceBtn) changeAdviceBtn.addEventListener('click', loadAdvice);
-            } catch (e) {}
-        })();
+            loadAdvice();
+            if (changeAdviceBtn) changeAdviceBtn.addEventListener('click', loadAdvice);
+        });
     </script>
 </body>
 </html>
