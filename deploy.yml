@@ -1,14 +1,14 @@
-name: Deploy Trạm Phước Đức to GitHub Pages
+name: Deploy Static Content to GitHub Pages
 
 on:
-  # Chạy workflow mỗi khi có lệnh push lên nhánh chính (thường là main hoặc master)
+  # Chạy workflow mỗi khi có push lên nhánh main (hoặc master)
   push:
     branches: ["main"]
 
   # Cho phép kích hoạt thủ công từ tab Actions trên GitHub
   workflow_dispatch:
 
-# Phân quyền cần thiết cho GITHUB_TOKEN để deploy lên GitHub Pages
+# Phân quyền cần thiết cho GitHub Pages deployment
 permissions:
   contents: read
   pages: write
@@ -26,18 +26,17 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout mã nguồn
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Cấu hình GitHub Pages
+      - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
 
-      - name: Đóng gói mã nguồn (Upload Artifact)
+      - name: Upload artifact (toàn bộ thư mục gốc)
         uses: actions/upload-pages-artifact@v3
         with:
-          # Tải lên toàn bộ thư mục gốc chứa file index.html của bạn
           path: '.'
 
-      - name: Tiến hành Deploy lên GitHub Pages
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
