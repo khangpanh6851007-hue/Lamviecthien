@@ -1,49 +1,25 @@
-# 🌟 Trạm Phước Đức - Hệ Thống Hỗ Trợ Tu Tâm Tích Phước
+# Trạm Phước Đức
 
-<div align="center">
+Ứng dụng web tĩnh hỗ trợ theo dõi thời gian thực, bộ đếm niệm lành hằng ngày, lời nhủ tâm linh và danh mục liên kết tham khảo trên trình duyệt di động lẫn máy tính.
 
-[![GitHub Pages](https://img.shields.io/badge/Status-Live-success?style=for-the-badge&logo=github)](https://khangpanh6851007-hue.github.io/)
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+## Tính năng chính
 
-*Ứng dụng web hiện đại hỗ trợ tu tâm, tích phước, theo dõi thời gian tâm linh và kết nối các không gian tri thức Phật giáo - nhân quả.*
+- **Đồng hồ & ngày tháng trực tiếp:** Hiển thị thứ, ngày/tháng/năm và giờ địa phương cập nhật mỗi giây.
+- **Đồng hồ quy đổi Cung Trời Hóa Lạc:** Mô phỏng quy đổi thời gian theo tỷ lệ tham chiếu (`1 Ngày Thiên Giới = 800 Năm Nhân Gian`).
+- **Đếm ngược 100 năm ân xá nhân loại:** Bộ đếm ngược thời gian theo năm, ngày, giờ và phút.
+- **Gieo duyên lành hằng ngày:** Nút bấm tăng bộ đếm niệm lành và lưu tự động qua `localStorage` của trình duyệt.
+- **Lời nhủ hằng ngày:** Chuyển đổi ngẫu nhiên các câu trích dẫn/lời khuyên ngắn.
+- **Danh mục liên kết nhanh:** Truy cập các trang chuyên mục và tài nguyên liên quan (mở ở tab mới).
 
-</div>
+## Công nghệ sử dụng
 
----
+- **HTML5** & **CSS3** (giao diện tối, responsive, tối ưu cho màn hình nhỏ)
+- **JavaScript (Vanilla JS)** (xử lý đồng hồ, bộ đếm ngược, lưu trữ cục bộ `localStorage`)
 
-## ✨ Tính Năng Nổi Bật
+## Triển khai & Chạy thử
 
-* **⏰ Đồng Hồ Nhân Gian & Thiên Giới**: 
-  * Hiển thị thời gian thực theo định dạng Việt Nam (`vi-VN`).
-  * Tích hợp đồng hồ đặc biệt tính thời gian tại **Cung Trời Hóa Lạc** (*1 Ngày Thiên Giới = 800 Năm Nhân Gian*).
-* **⏳ Đếm Ngược Ân Xá**: Bộ đếm ngược thời gian hướng đến mốc thế kỷ (100 Năm Ân Xá Nhân Loại).
-* **🙏 Gieo Duyên Lành (Tích Phước)**: Cho phép người dùng niệm chú/câu lành, tự động lưu trữ số liệu cá nhân qua `localStorage`.
-* **📖 Trí Tuệ & Lời Nhủ**: Tổng hợp danh ngôn, lời dạy tâm linh với tính năng làm mới ngẫu nhiên.
-* **🌐 Hệ Thống Liên Kết Đa Trạm**: Truy cập nhanh đến các chuyên trang vệ tinh về Phật giáo, Sấm Trạng Trình, Luật Nhân Quả, v.v.
+Vì ứng dụng được viết hoàn toàn bằng HTML/CSS/JS thuần (không cần bước build):
 
----
-
-## 📱 Giao Diện & Trải Nghiệm
-
-* Thiết kế **Mobile-First** tối ưu hoàn hảo cho màn hình điện thoại.
-* Giao diện tối (`Dark Mode`) dịu mắt, sang trọng với các tông màu vàng kim và tím huyền bí.
-* Tương thích tốt với các trình duyệt di động và WebView Android.
-
----
-
-## 🔗 Liên Kết Các Trạm Thành Viên
-
-Một số phân vùng tiêu biểu trong hệ sinh thái:
-* [☸️ Lời Dạy Của Đức Huỳnh Giáo Chủ](https://khangpanh6851007-hue.github.io/PGHH/)
-* [🪷 Nam Mô Đại Bi Quán Thế Âm Bồ Tát](https://khangpanh6851007-hue.github.io/NamM-iBiQu-nTh-mB-T-t/)
-* [🌌 Cung Trời Hóa Lạc](https://khangpanh6851007-hue.github.io/Cungtroihoalac/)
-* [📜 Sấm Trạng Trình](https://khangpanh6851007-hue.github.io/Samtrangtrinh/)
-
----
-
-## 👨‍💻 Tác Giả
-
-* Thiết kế và phát triển dành riêng cho **KhangPanh68**.
-* Bản quyền thuộc về cộng đồng tu tâm tích phước năm **2026**.
+1. Tải mã nguồn hoặc clone repository:
+   ```bash
+   git clone <URL_REPOSITORY_CUA_BAN>
